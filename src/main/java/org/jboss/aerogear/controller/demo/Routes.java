@@ -45,7 +45,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.GET)
                 .to(Home.class).anotherPage();
         route()
-                .from("/cars")
+                .from("/cars").roles("admin")
                 .on(RequestMethod.POST)
                 .to(Home.class).save(param(Car.class));
     }

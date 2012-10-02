@@ -18,22 +18,23 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.controller.RequestMethod;
 import org.jboss.aerogear.controller.demo.model.Car;
+import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 
 /**
-* Routes are the core of aerogear-controller–demo.
-* It's where we bind the the application bussines controller {@link Home} 
-* to the URL it responds.<br>
-* All the configuration is done with a type safe DSL.
-*
-* @see Home
-*/
+ * Routes are the core of aerogear-controller–demo.
+ * It's where we bind the the application bussines controller {@link Home}
+ * to the URL it responds.<br>
+ * All the configuration is done with a type safe DSL.
+ *
+ * @see Home
+ */
 
 public class Routes extends AbstractRoutingModule {
 
-	/**
-	 * Entry point for configuring the routes mapping http requests to the pojo controllers
-	 */
+    /**
+     * Entry point for configuring the routes mapping http requests to the pojo controllers
+     */
     @Override
     public void configuration() {
         route()
@@ -41,12 +42,24 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.GET)
                 .to(Home.class).index();
         route()
-                .from("/delorean")
+                .from("/delorean").roles("admin")
                 .on(RequestMethod.GET)
                 .to(Home.class).anotherPage();
         route()
-                .from("/cars").roles("admin")
+                .from("/cars")
                 .on(RequestMethod.POST)
                 .to(Home.class).save(param(Car.class));
+        route()
+                .from("/login")
+                .on(RequestMethod.GET)
+                .to(Login.class).index();
+        route()
+                .from("/signin")
+                .on(RequestMethod.POST)
+                .to(Login.class).login(param(User.class));
+        route()
+                .from("/register")
+                .on(RequestMethod.GET)
+                .to(Login.class).register(param(User.class));
     }
 }

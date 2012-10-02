@@ -60,6 +60,10 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/register")
                 .on(RequestMethod.GET)
-                .to(Login.class).register(param(User.class));
+                .to(Register.class).index();
+        route()
+                .from("/create")
+                .on(RequestMethod.POST)
+                .to(Register.class).register(param(User.class));
     }
 }

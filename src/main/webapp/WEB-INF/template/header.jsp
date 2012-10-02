@@ -8,7 +8,7 @@
     <!-- Basic Page Needs
    ================================================== -->
     <meta charset="utf-8">
-    <title>Your Page Title Here :)</title>
+    <title>AeroGear Security Demo Page</title>
     <meta name="description" content="">
     <meta name="author" content="">
 

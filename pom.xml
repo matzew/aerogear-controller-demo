@@ -5,7 +5,7 @@
 
     <groupId>org.jboss.aerogear</groupId>
     <artifactId>aerogear-controller-demo</artifactId>
-    <version>1.0.0.Alpha1-SNAPSHOT</version>
+    <version>0.0.3.M6-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>AeroGear Controller Demo</name>
 
@@ -86,13 +86,13 @@
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-controller</artifactId>
-            <version>1.0.0.Alpha1-SNAPSHOT</version>
+            <version>0.0.3.M6-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-security</artifactId>
-            <version>1.0.0.Alpha1-SNAPSHOT</version>
+            <version>0.0.3.M6-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

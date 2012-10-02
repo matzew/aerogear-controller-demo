@@ -2,12 +2,18 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.security.dsl.AuthenticationManager;
+import org.jboss.aerogear.security.dsl.IDMHelper;
+import org.jboss.aerogear.security.model.AeroGearUser;
+import org.jboss.picketlink.idm.model.SimpleUser;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
-public class Login {
+public class Register {
+
+    @Inject
+    private IDMHelper idm;
 
     @Inject
     private AuthenticationManager authenticationManager;
@@ -16,17 +22,10 @@ public class Login {
         System.out.println("Login page!");
     }
 
-    public User login(User user) {
+    public AeroGearUser register(User user) {
 
-        System.out.println(user.getId());
-        System.out.println(user.getPassword());
-
+        idm.grant("admin").to(user);
         boolean logged = authenticationManager.login(user.getId(), user.getPassword());
-        System.out.println("Logged? " + logged);
         return user;
-    }
-
-    public void logout() {
-        System.out.println("User logout!");
     }
 }

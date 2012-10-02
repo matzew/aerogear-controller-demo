@@ -8,7 +8,7 @@
         <p>maybe you should try the <a href="delorean">restricted delorean page</a></p>
     </div>
     <div class="sixteen columns">
-        <form action="create" method="post">
+        <form action="register" method="post">
 
             <label>Username:</label>
             <input type="text" name="user.id"/>

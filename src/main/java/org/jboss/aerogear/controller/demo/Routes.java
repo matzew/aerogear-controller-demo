@@ -54,7 +54,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.GET)
                 .to(Login.class).index();
         route()
-                .from("/signin")
+                .from("/login")
                 .on(RequestMethod.POST)
                 .to(Login.class).login(param(User.class));
         route()
@@ -62,7 +62,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.GET)
                 .to(Register.class).index();
         route()
-                .from("/create")
+                .from("/register")
                 .on(RequestMethod.POST)
                 .to(Register.class).register(param(User.class));
     }

@@ -1,17 +1,23 @@
-<%@page pageEncoding="UTF-8" %>
-<html>
-<body>
-<p>hello, security!</p>
-<p>maybe you should try the <a href="delorean">delorean page</a></p>
+<jsp:include page="../../template/header.jsp" />
+<div class="container">
+    <div class="sixteen columns">
+        <h1 class="remove-bottom" style="margin-top: 40px">Login</h1>
+        <hr />
+    </div>
+    <div class="sixteen columns">
+        <p>maybe you should try the <a href="delorean">restricted delorean page</a></p>
+    </div>
+    <div class="sixteen columns">
+        <form action="signin" method="post">
 
-<p>
-<form action="signin" method="post">
-    <ul>
-        <li><label>Username:</label><input type="text" name="user.name"/></li>
-        <li><label>Password:</label><input type="password" name="user.password"/></li>
-        <li><input type="submit"/></li>
-    </ul>
-</form>
-</p>
-</body>
-</html>
+            <label>Username:</label>
+            <input type="text" name="user.name"/>
+            <label>Password:</label>
+            <input type="password" name="user.password"/>
+            <input type="submit"/>
+
+        </form>
+    </div>
+
+</div>
+<jsp:include page="../../template/footer.jsp" />

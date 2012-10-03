@@ -18,11 +18,8 @@ public class Login {
 
     public User login(User user) {
 
-        System.out.println(user.getId());
-        System.out.println(user.getPassword());
+        authenticationManager.login(user.getId(), user.getPassword());
 
-        boolean logged = authenticationManager.login(user.getId(), user.getPassword());
-        System.out.println("Logged? " + logged);
         return user;
     }
 

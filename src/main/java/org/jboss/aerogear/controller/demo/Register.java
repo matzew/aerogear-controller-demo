@@ -11,8 +11,9 @@ import javax.inject.Inject;
 @Stateless
 public class Register {
 
+    public static final String DEFAULT_ROLE = "admin";
     @Inject
-    private IDMConfiguration idm;
+    private IDMConfiguration configuration;
 
     @Inject
     private AuthenticationManager authenticationManager;
@@ -23,8 +24,8 @@ public class Register {
 
     public AeroGearUser register(User user) {
 
-        idm.grant("admin").to(user);
-        boolean logged = authenticationManager.login(user.getId(), user.getPassword());
+        configuration.grant(DEFAULT_ROLE).to(user);
+        authenticationManager.login(user.getId(), user.getPassword());
         return user;
     }
 }

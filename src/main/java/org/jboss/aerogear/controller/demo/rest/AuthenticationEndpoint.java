@@ -51,7 +51,8 @@ public class AuthenticationEndpoint {
         //TODO it should be done by admin screen
         configuration.grant(DEFAULT_ROLE).to(user);
 
-        authenticationManager.login(user.getId(), user.getPassword());
+        authenticationManager.login(user);
+
         return Response.ok(user).build();
     }
 
@@ -63,7 +64,7 @@ public class AuthenticationEndpoint {
 
         LOGGER.debug("Logged in!");
 
-        boolean logged = authenticationManager.login(user.getId(), user.getPassword());
+        authenticationManager.login(user);
 
         return Response.ok(user).build();
     }

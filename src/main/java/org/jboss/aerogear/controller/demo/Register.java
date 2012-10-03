@@ -25,7 +25,7 @@ public class Register {
     public AeroGearUser register(User user) {
 
         configuration.grant(DEFAULT_ROLE).to(user);
-        authenticationManager.login(user.getId(), user.getPassword());
+        authenticationManager.login(user);
         return user;
     }
 }

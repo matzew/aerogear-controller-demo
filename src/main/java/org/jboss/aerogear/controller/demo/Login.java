@@ -18,7 +18,7 @@ public class Login {
 
     public User login(User user) {
 
-        authenticationManager.login(user.getId(), user.getPassword());
+        authenticationManager.login(user);
 
         return user;
     }

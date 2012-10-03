@@ -18,7 +18,7 @@ package org.jboss.aerogear.controller.demo.rest;
 
 import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.security.dsl.AuthenticationManager;
-import org.jboss.aerogear.security.dsl.IDMHelper;
+import org.jboss.aerogear.security.dsl.IDMConfiguration;
 import org.jboss.logging.Logger;
 
 import javax.ejb.Stateless;
@@ -41,7 +41,7 @@ public class AuthenticationEndpoint {
     private AuthenticationManager authenticationManager;
 
     @Inject
-    private IDMHelper idm;
+    private IDMConfiguration configuration;
 
     @POST
     @Path("/register")
@@ -49,7 +49,8 @@ public class AuthenticationEndpoint {
     public Response register(final User user) {
 
         //TODO it should be done by admin screen
-        idm.grant(DEFAULT_ROLE).to(user);
+        configuration.grant(DEFAULT_ROLE).to(user);
+
         authenticationManager.login(user.getId(), user.getPassword());
         return Response.ok(user).build();
     }

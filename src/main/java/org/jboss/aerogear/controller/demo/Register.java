@@ -2,9 +2,8 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.security.dsl.AuthenticationManager;
-import org.jboss.aerogear.security.dsl.IDMHelper;
+import org.jboss.aerogear.security.dsl.IDMConfiguration;
 import org.jboss.aerogear.security.model.AeroGearUser;
-import org.jboss.picketlink.idm.model.SimpleUser;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -13,7 +12,7 @@ import javax.inject.Inject;
 public class Register {
 
     @Inject
-    private IDMHelper idm;
+    private IDMConfiguration idm;
 
     @Inject
     private AuthenticationManager authenticationManager;

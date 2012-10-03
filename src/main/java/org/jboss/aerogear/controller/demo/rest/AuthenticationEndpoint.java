@@ -35,6 +35,7 @@ import javax.ws.rs.core.Response;
 public class AuthenticationEndpoint {
 
     private static final Logger LOGGER = Logger.getLogger(AuthenticationEndpoint.class);
+    public static final String DEFAULT_ROLE = "admin";
 
     @Inject
     private AuthenticationManager authenticationManager;
@@ -48,7 +49,7 @@ public class AuthenticationEndpoint {
     public Response register(final User user) {
 
         //TODO it should be done by admin screen
-        idm.grant("admin").to(user);
+        idm.grant(DEFAULT_ROLE).to(user);
         authenticationManager.login(user.getId(), user.getPassword());
         return Response.ok(user).build();
     }

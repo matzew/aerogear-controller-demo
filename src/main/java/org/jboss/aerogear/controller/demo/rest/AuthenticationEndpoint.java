@@ -18,7 +18,7 @@ package org.jboss.aerogear.controller.demo.rest;
 
 import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.security.dsl.AuthenticationManager;
-import org.jboss.aerogear.security.dsl.IDMConfiguration;
+import org.jboss.aerogear.security.dsl.IdentityManagement;
 import org.jboss.logging.Logger;
 
 import javax.ejb.Stateless;
@@ -41,7 +41,7 @@ public class AuthenticationEndpoint {
     private AuthenticationManager authenticationManager;
 
     @Inject
-    private IDMConfiguration configuration;
+    private IdentityManagement configuration;
 
     @POST
     @Path("/register")

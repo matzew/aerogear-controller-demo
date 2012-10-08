@@ -37,6 +37,10 @@ public class Routes extends AbstractRoutingModule {
      */
     @Override
     public void configuration() {
+
+        route()
+                .on(SecurityException.class)
+                .to(Error.class).index();
         route()
                 .from("/")
                 .on(RequestMethod.GET)

@@ -18,6 +18,9 @@
             </ul>
         </form>
     </div>
+    <div class="sixteen columns">
+        <p>maybe you should try out the general <a href="throwException">error handling</a></p>
+    </div>
 
 </div>
 <jsp:include page="../../template/footer.jsp" />

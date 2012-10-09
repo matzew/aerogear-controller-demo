@@ -5,9 +5,7 @@
         <hr />
     </div>
     <div class="sixteen columns">
-        <p>maybe you should try the <a href="delorean">restricted delorean page</a></p>
-        <p><a href="login">Login</a></p>
-        <p><a href="register">Register</a></p>
+        <p>${requestScope['org.jboss.aerogear.controller.exception']}</p>
     </div>
 </div>
 <jsp:include page="../../template/footer.jsp" />

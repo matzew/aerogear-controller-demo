@@ -5,7 +5,7 @@
 
     <groupId>org.jboss.aerogear</groupId>
     <artifactId>aerogear-controller-demo</artifactId>
-    <version>0.0.3.M6-SNAPSHOT</version>
+    <version>0.0.4.M6-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>AeroGear Controller Demo</name>
 

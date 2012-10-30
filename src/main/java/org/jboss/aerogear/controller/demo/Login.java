@@ -1,5 +1,6 @@
 package org.jboss.aerogear.controller.demo;
 
+import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.security.auth.AuthenticationManager;
 import org.jboss.aerogear.security.model.AeroGearUser;
 
@@ -16,8 +17,10 @@ public class Login {
         System.out.println("Login page!");
     }
 
-    public AeroGearUser login(AeroGearUser user) {
+    public User login(User user) {
 
+        System.out.println(user.getId());
+        System.out.println(user.getPassword());
         authenticationManager.login(user);
 
         return user;

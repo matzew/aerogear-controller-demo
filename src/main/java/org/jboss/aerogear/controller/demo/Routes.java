@@ -18,9 +18,9 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.controller.RequestMethod;
 import org.jboss.aerogear.controller.demo.model.Car;
+import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.security.exception.AeroGearSecurityException;
-import org.jboss.aerogear.security.model.AeroGearUser;
 
 /**
  * Routes are the core of aerogear-controller–demo.
@@ -64,7 +64,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/login")
                 .on(RequestMethod.POST)
-                .to(Login.class).login(param(AeroGearUser.class));
+                .to(Login.class).login(param(User.class));
         route()
                 .from("/register")
                 .on(RequestMethod.GET)
@@ -72,7 +72,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/register")
                 .on(RequestMethod.POST)
-                .to(Register.class).register(param(AeroGearUser.class));
+                .to(Register.class).register(param(User.class));
 
         route()
                 .from("/throwException")

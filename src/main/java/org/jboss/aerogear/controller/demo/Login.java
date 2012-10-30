@@ -2,7 +2,6 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.security.auth.AuthenticationManager;
-import org.jboss.aerogear.security.model.AeroGearUser;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -17,10 +16,15 @@ public class Login {
         System.out.println("Login page!");
     }
 
-    public User login(User user) {
+    public void otpLogin() {
+        System.out.println("OTP Login page!");
+    }
 
-        System.out.println(user.getId());
-        System.out.println(user.getPassword());
+    public User login(User user) {
+        System.out.println("Username: " + user.getId());
+        System.out.println("Password: " + user.getPassword());
+        System.out.println("OTP: " + user.getOtp());
+
         authenticationManager.login(user);
 
         return user;

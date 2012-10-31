@@ -21,7 +21,11 @@
 
         </form>
     </div>
-    <div id="otp-secret-div"><a id="get-secret" href="secret">Generate OTP</a></div>
+    <!-- TODO Include a function to reload the QRCode and generate a new secret -->
+    <div id="otp-secret-div"><a id="get-secret" href="#">Google Authenticator</a></div>
+    <div id="qrcode-div"></div>
+    <div id="b32"></div>
+    <div id="val"></div>
 
 </div>
 <jsp:include page="../../template/footer.jsp" />

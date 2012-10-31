@@ -16,7 +16,7 @@ public class Login {
         System.out.println("Login page!");
     }
 
-    public void otpLogin() {
+    public void otp() {
         System.out.println("OTP Login page!");
     }
 

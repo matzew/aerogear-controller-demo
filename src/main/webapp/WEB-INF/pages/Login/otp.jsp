@@ -4,7 +4,7 @@
         <h1 class="remove-bottom" style="margin-top: 40px">OTP Login</h1>
         <hr />
     </div>
-    <div id="userinfo-msg"></div>.: <a id="logout-btn" href="#" onclick="logout();">Logout</a> :.
+    <p> <a href="logout">Logout</a></p>
     <div class="sixteen columns">
         <p>maybe you should try the <a href="delorean">restricted delorean page</a></p>
     </div>

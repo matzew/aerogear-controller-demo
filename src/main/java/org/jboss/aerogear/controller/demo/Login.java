@@ -21,6 +21,7 @@ public class Login {
     }
 
     public void otp() {
+        authenticationManager.logout();
         System.out.println("OTP Login page!");
     }
 

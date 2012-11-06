@@ -19,18 +19,12 @@
 <%@page pageEncoding="UTF-8" %>
 <div class="container">
     <div class="sixteen columns">
-        <h1 class="remove-bottom" style="margin-top: 40px">Logged in</h1>
+        <h1 class="remove-bottom" style="margin-top: 40px">OTP Logged in</h1>
         <hr />
     </div>
     <div class="sixteen columns">
         <p>maybe you should try the <a href="delorean">delorean page</a></p>
         hello ${user.id} to the authentication page!
-        <p>Do you wanna try to login with OTP? <a href="otp">OTP login page</a></p>
     </div>
-    <!-- TODO Include a function to reload the QRCode and generate a new secret -->
-    <div id="otp-secret-div"><a id="get-secret" href="#">Google Authenticator</a></div>
-    <div id="qrcode-div"></div>
-    <div id="b32"></div>
-    <div id="val"></div>
 </div>
 <jsp:include page="../../template/footer.jsp" />

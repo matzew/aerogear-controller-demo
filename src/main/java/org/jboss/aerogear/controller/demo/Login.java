@@ -20,6 +20,13 @@ public class Login {
         System.out.println("OTP Login page!");
     }
 
+    public User success(User user) {
+        System.out.println("Success OTP Login page!");
+        authenticationManager.login(user);
+
+        return user;
+    }
+
     public User login(User user) {
         System.out.println("Username: " + user.getId());
         System.out.println("Password: " + user.getPassword());

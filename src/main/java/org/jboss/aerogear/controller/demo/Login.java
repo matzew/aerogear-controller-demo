@@ -2,6 +2,7 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.security.auth.AuthenticationManager;
+import org.jboss.aerogear.security.auth.CredentialFactory;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,6 +12,9 @@ public class Login {
 
     @Inject
     private AuthenticationManager authenticationManager;
+
+    @Inject
+    private CredentialFactory credentialFactory;
 
     public void index() {
         System.out.println("Login page!");
@@ -27,8 +31,17 @@ public class Login {
         return user;
     }
 
+    public User otplogin(User user) {
+
+        credentialFactory.setOtpCredential(user);
+        authenticationManager.login(user);
+
+        return user;
+    }
+
     public User login(User user) {
 
+        credentialFactory.setSimpleCredential(user);
         authenticationManager.login(user);
 
         return user;

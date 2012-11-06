@@ -70,6 +70,10 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .to(Login.class).login(param(User.class));
         route()
+                .from("/otplogin")
+                .on(RequestMethod.POST)
+                .to(Login.class).otplogin(param(User.class));
+        route()
                 .from("/success")
                 .on(RequestMethod.POST)
                 .to(Login.class).success(param(User.class));

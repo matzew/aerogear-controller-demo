@@ -28,9 +28,6 @@ public class Login {
     }
 
     public User login(User user) {
-        System.out.println("Username: " + user.getId());
-        System.out.println("Password: " + user.getPassword());
-        System.out.println("OTP: " + user.getOtp());
 
         authenticationManager.login(user);
 
@@ -39,5 +36,6 @@ public class Login {
 
     public void logout() {
         System.out.println("User logout!");
+        authenticationManager.logout();
     }
 }

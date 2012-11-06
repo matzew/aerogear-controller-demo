@@ -5,7 +5,7 @@
 
     <groupId>org.jboss.aerogear</groupId>
     <artifactId>aerogear-controller-demo</artifactId>
-    <version>1.0.0.M1-20121105</version>
+    <version>1.0.0.M1-20121106</version>
     <packaging>war</packaging>
     <name>AeroGear Controller Demo</name>
 
@@ -92,13 +92,13 @@
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-security</artifactId>
-            <version>1.0.0.M1-20121105</version>
+            <version>1.0.0.M1-20121106</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-security-picketbox</artifactId>
-            <version>1.0.0.M1-20121105</version>
+            <version>1.0.0.M1-20121106</version>
             <scope>compile</scope>
         </dependency>
 

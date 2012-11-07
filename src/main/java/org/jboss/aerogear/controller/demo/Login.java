@@ -20,26 +20,6 @@ public class Login {
         System.out.println("Login page!");
     }
 
-    public void otp() {
-        authenticationManager.logout();
-        System.out.println("OTP Login page!");
-    }
-
-    public User success(User user) {
-        System.out.println("Success OTP Login page!");
-        authenticationManager.login(user);
-
-        return user;
-    }
-
-    public User otplogin(User user) {
-
-        credentialFactory.setOtpCredential(user);
-        authenticationManager.login(user);
-
-        return user;
-    }
-
     public User login(User user) {
 
         credentialFactory.setSimpleCredential(user);

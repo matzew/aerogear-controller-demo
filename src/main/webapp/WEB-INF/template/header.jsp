@@ -26,11 +26,6 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="js/jquery.qrcode.min.js"></script>
-    <script src="js/Nibbler.js"></script>
-    <script src="js/otp.js"></script>
-
     <!-- Favicons
      ================================================== -->
     <link rel="shortcut icon" href="images/favicon.ico">

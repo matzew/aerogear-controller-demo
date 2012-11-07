@@ -16,15 +16,27 @@
   --%>
 
 <jsp:include page="../../template/header.jsp" />
-<%@page pageEncoding="UTF-8" %>
 <div class="container">
     <div class="sixteen columns">
-        <h1 class="remove-bottom" style="margin-top: 40px">OTP Logged in</h1>
+        <h1 class="remove-bottom" style="margin-top: 40px">Otp Login</h1>
         <hr />
     </div>
     <div class="sixteen columns">
-        <p>maybe you should try the <a href="delorean">delorean page</a></p>
-        hello ${user.id} to the authentication page!
+        <p>maybe you should try the <a href="delorean">restricted delorean page</a></p>
     </div>
+    <div class="sixteen columns">
+        <form action="otp" method="post">
+
+            <label>Username:</label>
+            <input type="text" name="user.id"/>
+            <label>Password:</label>
+            <input type="password" name="user.password"/>
+            <label>Otp:</label>
+            <input type="text" name="user.otp"/>
+            <input type="submit"/>
+
+        </form>
+    </div>
+
 </div>
 <jsp:include page="../../template/footer.jsp" />

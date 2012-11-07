@@ -8,7 +8,7 @@
     <div class="sixteen columns">
         <p>maybe you should try the <a href="delorean">delorean page</a></p>
 
-        hello ${user.id} to the authentication page!
+        hello ${aeroGearUser.id} to the authentication page!
     </div>
 </div>
 <jsp:include page="../../template/footer.jsp" />

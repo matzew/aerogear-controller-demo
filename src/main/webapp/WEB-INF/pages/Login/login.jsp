@@ -15,7 +15,7 @@
   ~ limitations under the License.
   --%>
 
-<jsp:include page="../../template/barcode_header.jsp" />
+<jsp:include page="../../template/header.jsp" />
 <%@page pageEncoding="UTF-8" %>
 <div class="container">
     <div class="sixteen columns">
@@ -24,7 +24,7 @@
     </div>
     <div class="sixteen columns">
         <p>maybe you should try the <a href="delorean">delorean page</a></p>
-        hello ${user.id} to the authentication page!
+        hello ${aeroGearUser.id} to the authentication page!
         <p> <a href="logout">Logout</a></p>
     </div>
     <p> <a href="otp">Try Google authenticator</a></p>

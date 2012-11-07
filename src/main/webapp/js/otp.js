@@ -8,7 +8,7 @@ $(document).ready(function() {
 	        data:{},
 	        type:'GET', 
 	        success:function (data) {
-	        	$('#qrcode-div').qrcode("otpauth://totp/" + data.key + "?secret=" + data.b32);
+	        	$('#qrcode-div').qrcode("otpauth://totp/" + data.id + "?secret=" + data.b32);
 	        	$('#b32').text("Base32 Value=" + data.b32);
 	        	$('#val').text("Straight Value=" + data.secret);
 	        }

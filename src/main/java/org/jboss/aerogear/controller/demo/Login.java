@@ -35,7 +35,6 @@ public class Login {
 
     public AeroGearUser login(AeroGearUser user) {
         authenticationManager.login(user);
-
         return user;
     }
 

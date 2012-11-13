@@ -18,14 +18,25 @@
 <jsp:include page="../../template/header.jsp" />
 <div class="container">
     <div class="sixteen columns">
-        <h1 class="remove-bottom" style="margin-top: 40px">Logged out!</h1>
+        <h1 class="remove-bottom" style="margin-top: 40px">Otp Login</h1>
         <hr />
     </div>
     <div class="sixteen columns">
         <p>maybe you should try the <a href="delorean">restricted delorean page</a></p>
-        hello ${aeroGearUser.id} to the authentication page!
-    <div class="sixteen columns">
-        <p>or try to login again <a href="login">Login page</a></p>
     </div>
+    <div class="sixteen columns">
+        <form action="otp" method="post">
+
+            <label>Username:</label>
+            <input type="text" name="aeroGearUser.id"/>
+            <label>Password:</label>
+            <input type="password" name="aeroGearUser.password"/>
+            <label>Otp:</label>
+            <input type="text" name="aeroGearUser.otp"/>
+            <input type="submit"/>
+
+        </form>
+    </div>
+
 </div>
 <jsp:include page="../../template/footer.jsp" />

@@ -66,6 +66,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .to(Login.class).login(param(AeroGearUser.class));
         route()
+                .to(Otp.class).otp(param(AeroGearUser.class));
                 .from("/logout")
                 .on(RequestMethod.GET)
                 .to(Login.class).logout();

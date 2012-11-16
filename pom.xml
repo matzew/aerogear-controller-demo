@@ -110,7 +110,7 @@
         <dependency>
             <groupId>org.abstractj.cuckootp</groupId>
             <artifactId>cuckootp</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0.0.M1-20121116</version>
             <scope>compile</scope>
         </dependency>
 

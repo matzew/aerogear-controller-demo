@@ -17,6 +17,7 @@
 
 package org.jboss.aerogear.controller.demo;
 
+import org.abstractj.cuckootp.Totp;
 import org.jboss.aerogear.security.auth.AuthenticationManager;
 import org.jboss.aerogear.security.model.AeroGearUser;
 
@@ -24,22 +25,24 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
-public class Login {
+public class Otp {
 
     @Inject
     private AuthenticationManager authenticationManager;
 
     public void index() {
-        System.out.println("Login page!");
+        System.out.println("OTP Login page!");
+        authenticationManager.logout();
     }
 
-    public AeroGearUser login(AeroGearUser user) {
+    public AeroGearUser otp(AeroGearUser user) {
+        Totp totp = new Totp("B2374TNIQ3HKC446");
+        boolean result = totp.verify(user.getOtp());
+
+        if (!result)
+            throw new RuntimeException("Invalid OTP");
+
         authenticationManager.login(user);
         return user;
-    }
-
-    public void logout() {
-        System.out.println("User logout!");
-        authenticationManager.logout();
     }
 }

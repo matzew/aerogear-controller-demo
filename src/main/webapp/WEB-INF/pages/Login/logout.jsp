@@ -22,8 +22,7 @@
         <hr />
     </div>
     <div class="sixteen columns">
-        <p>maybe you should try the <a href="delorean">restricted delorean page</a></p>
-        hello ${aeroGearUser.id} to the authentication page!
+        <p> ${aeroGearUser.id} maybe you should try the <a href="delorean">restricted delorean page</a></p>
     <div class="sixteen columns">
         <p>or try to login again <a href="login">Login page</a></p>
     </div>

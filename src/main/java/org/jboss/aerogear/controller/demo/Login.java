@@ -22,15 +22,18 @@ import org.jboss.aerogear.security.model.AeroGearUser;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.logging.Logger;
 
 @Stateless
 public class Login {
+
+    private static final Logger LOGGER = Logger.getLogger(Login.class.getSimpleName());
 
     @Inject
     private AuthenticationManager authenticationManager;
 
     public void index() {
-        System.out.println("Login page!");
+        LOGGER.info("Login page!");
     }
 
     public AeroGearUser login(AeroGearUser user) {
@@ -39,7 +42,7 @@ public class Login {
     }
 
     public void logout() {
-        System.out.println("User logout!");
+        LOGGER.info("User logout!");
         authenticationManager.logout();
     }
 }

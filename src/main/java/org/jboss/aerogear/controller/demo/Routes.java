@@ -16,9 +16,9 @@
  */
 package org.jboss.aerogear.controller.demo;
 
-import org.jboss.aerogear.controller.RequestMethod;
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
+import org.jboss.aerogear.controller.router.RequestMethod;
 import org.jboss.aerogear.security.exception.AeroGearSecurityException;
 import org.jboss.aerogear.security.model.AeroGearUser;
 

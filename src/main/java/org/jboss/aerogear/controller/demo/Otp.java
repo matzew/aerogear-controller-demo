@@ -17,11 +17,12 @@
 
 package org.jboss.aerogear.controller.demo;
 
-import org.abstractj.cuckootp.Totp;
-import org.jboss.aerogear.security.model.AeroGearCredential;
+import org.jboss.aerogear.security.auth.Secret;
 import org.jboss.aerogear.security.model.AeroGearUser;
+import org.jboss.aerogear.security.otp.Totp;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import java.util.logging.Logger;
 
@@ -29,14 +30,14 @@ import java.util.logging.Logger;
 public class Otp {
 
     @Inject
-    private AeroGearCredential aeroGearCredential;
+    @Secret
+    private Instance<String> secret;
 
     private static final Logger LOGGER = Logger.getLogger(Otp.class.getSimpleName());
 
     public AeroGearUser otp(AeroGearUser user) {
 
-        LOGGER.info("INJECTED CREDENTIAL: " + aeroGearCredential.getSecret());
-        Totp totp = new Totp(aeroGearCredential.getSecret());
+        Totp totp = new Totp(secret.get());
         boolean result = totp.verify(user.getOtp());
 
         if (!result)

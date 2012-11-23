@@ -33,6 +33,7 @@
         <aerogear.controller.version>1.0.0.M1-20121123-SNAPSHOT</aerogear.controller.version>
         <aerogear.security.version>1.0.0.M1-20121107-SNAPSHOT</aerogear.security.version>
         <aerogear.security.picketbox.version>1.0.0.M1-20121107-SNAPSHOT</aerogear.security.picketbox.version>
+        <aerogear.otp.version>1.0.0.M1-20121116-SNAPSHOT</aerogear.otp.version>
     </properties>
 
     <dependencyManagement>
@@ -76,6 +77,13 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-otp-java</artifactId>
+            <version>${aerogear.otp.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- Import the CDI API, we use provided scope as the API is included
             in JBoss AS 7 -->
         <dependency>
@@ -107,12 +115,7 @@
             <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.abstractj.cuckootp</groupId>
-            <artifactId>cuckootp</artifactId>
-            <version>1.0.0.M1-20121116</version>
-            <scope>compile</scope>
-        </dependency>
+
 
         <!-- Import the JPA API, we use provided scope as the API is included
       in JBoss -->

@@ -28,6 +28,11 @@
         <!-- Define the version of JBoss' Java EE 6 APIs we want to import. Any dependencies from org.jboss.spec will have their
              version defined by this BOM -->
         <javaee6.bom.version>1.0.0.M3</javaee6.bom.version>
+
+        <!-- Define the version of AeroGear APIs we want to import -->
+        <aerogear.controller.version>1.0.0.M1-20121123-SNAPSHOT</aerogear.controller.version>
+        <aerogear.security.version>1.0.0.M1-20121107-SNAPSHOT</aerogear.security.version>
+        <aerogear.security.picketbox.version>1.0.0.M1-20121107-SNAPSHOT</aerogear.security.picketbox.version>
     </properties>
 
     <dependencyManagement>
@@ -51,6 +56,25 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-controller</artifactId>
+            <version>${aerogear.controller.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-security</artifactId>
+            <version>${aerogear.security.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-security-picketbox</artifactId>
+            <version>${aerogear.security.picketbox.version}</version>
+            <scope>compile</scope>
+        </dependency>
 
         <!-- Import the CDI API, we use provided scope as the API is included
             in JBoss AS 7 -->
@@ -82,24 +106,6 @@
             <groupId>org.jboss.spec.javax.ws.rs</groupId>
             <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
             <scope>provided</scope>
-        </dependency>
-         <dependency>
-            <groupId>org.jboss.aerogear</groupId>
-            <artifactId>aerogear-controller</artifactId>
-            <version>1.0.0.M1-20121123-SNAPSHOT</version>
-            <scope>compile</scope>
-          </dependency>
-          <dependency>
-            <groupId>org.jboss.aerogear</groupId>
-            <artifactId>aerogear-security</artifactId>
-            <version>1.0.0.M1-20121107-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.aerogear</groupId>
-            <artifactId>aerogear-security-picketbox</artifactId>
-            <version>1.0.0.M1-20121107-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Import the JPA API, we use provided scope as the API is included

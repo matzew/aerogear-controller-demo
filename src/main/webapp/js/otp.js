@@ -10,8 +10,7 @@ $(document).ready(function() {
 	        success:function (data) {
                 console.log(data.uri);
                 $('#qrcode-div').qrcode(data.uri);
-                $('#val').text("URI=" + data.uri);
-	        }
+            }
 	    });
 	}
 });

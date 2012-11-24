@@ -28,10 +28,11 @@
         <p> <a href="logout">Logout</a></p>
     </div>
     <div class="sixteen columns">
-        <h2>Try Google authenticator</h2>
+        <h2>Google authenticator</h2>
         <hr />
+        <p><strong>Note:</strong> <em>If you have already scanned the QRCode, is not necessary to do it again</em></p>
+        <h5><a href="#" id="qrcode" >Give it a try!</a></h5>
         <div id="qrcode-div"></div>
-
         <form action="otp" method="post">
             <label>OTP:</label>
             <input type="text" name="aeroGearUser.otp"/>

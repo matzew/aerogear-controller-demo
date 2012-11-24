@@ -1,10 +1,9 @@
-$(document).ready(function() {
-	if (!$('#qrcode-div')) {
-		return;
-	}
+$( document ).ready( function() {
 
-	if ($('#qrcode-div')) {
-		var jqxhr = $.ajax('/aerogear-controller-demo/auth/otp/secret', {
+	$(' #qrcode ').click( function( event ) {
+        event.preventDefault();
+
+		$.ajax('/aerogear-controller-demo/auth/otp/secret', {
 	        data:{},
 	        type:'GET', 
 	        success:function (data) {
@@ -12,5 +11,5 @@ $(document).ready(function() {
                 $('#qrcode-div').qrcode(data.uri);
             }
 	    });
-	}
+	});
 });

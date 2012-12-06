@@ -71,4 +71,8 @@ public class Home {
     public Car save(Car car) {
         return car;
     }
+    
+    public Car get(String color, String brand) {
+        return new Car(color, brand);
+    }
 }

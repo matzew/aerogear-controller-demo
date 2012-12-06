@@ -1,9 +1,9 @@
-/***
+/*
  * JBoss, Home of Professional Open Source
  * Copyright 2012, Red Hat, Inc., and individual contributors
  * by the @authors tag. See the copyright.txt in the distribution for a
  * full listing of individual contributors.
-
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,38 +14,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.controller.demo.model;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonProperty;
+package org.jboss.aerogear.controller.demo.config;
 
-/**
- * The model car is an immutable object that represents our domain.
- */
-public class Car {
-    private String color;
-    private String brand;
+import org.jboss.aerogear.controller.router.RouteContext;
+import org.jboss.aerogear.controller.router.rest.AbstractRestResponder;
 
-    @JsonCreator
-    public Car(@JsonProperty("color") final String color, @JsonProperty("brand") final String brand) {
-        this.color = color;
-        this.brand = brand;
+public class CustomMediaTypeResponder extends AbstractRestResponder {
+    
+    public static final String MEDIA_TYPE = "application/custom";
+
+    public CustomMediaTypeResponder() {
+        super(MEDIA_TYPE);
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public String getBrand() {
-        return brand;
+    public void writeResponse(Object entity, RouteContext routeContext) throws Exception {
+        routeContext.getResponse().getWriter().write("CustomMediaTypeResponder returned: " + entity);
     }
 
     @Override
-    public String toString() {
-        return "Car[" +
-                "color='" + color + '\'' +
-                ", brand='" + brand + '\'' +
-                ']';
-
+    public String mediaType() {
+        return MEDIA_TYPE;
     }
+
 }

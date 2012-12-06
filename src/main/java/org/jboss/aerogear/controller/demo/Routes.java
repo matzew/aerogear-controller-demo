@@ -18,6 +18,7 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
+import org.jboss.aerogear.controller.router.MediaType;
 import org.jboss.aerogear.controller.router.RequestMethod;
 import org.jboss.aerogear.security.exception.AeroGearSecurityException;
 import org.jboss.aerogear.security.model.AeroGearUser;
@@ -56,7 +57,13 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/cars")
                 .on(RequestMethod.POST)
+                .produces(MediaType.JSON, MediaType.HTML)
                 .to(Home.class).save(param(Car.class));
+        route()
+                .from("/cars")
+                .on(RequestMethod.GET)
+                .produces(MediaType.JSON.toString(), "application/custom")
+                .to(Home.class).get(param("color", "pink"), param("brand", "mini"));
         route()
                 .from("/login")
                 .on(RequestMethod.GET)
@@ -81,7 +88,6 @@ public class Routes extends AbstractRoutingModule {
                 .from("/register")
                 .on(RequestMethod.POST)
                 .to(Register.class).register(param(AeroGearUser.class));
-
         route()
                 .from("/throwException")
                 .on(RequestMethod.GET)

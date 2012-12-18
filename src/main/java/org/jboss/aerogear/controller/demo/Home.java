@@ -29,7 +29,7 @@ import org.jboss.aerogear.controller.demo.model.Car;
 public class Home {
 
 	/**
-	 * Respond to a GET resquest to "/". The response page follow
+	 * Respond to a GET request to "/". The response page follow
 	 * a convention, having a <em>folder/jsp</em> at the directory <em>WEB-INF/pages</em>.
 	 * The folder/jsp are named after the business controller class/method been called, respectively.
 	 * Ex: <em>WEB-INF/pages/Home/index.jsp</em>
@@ -46,7 +46,7 @@ public class Home {
 	 * Ex: <em>WEB-INF/pages/Home/anotherPage.jsp</em>
      * redirect the answer to <em>WEB-INF/pages/Home/anotherPage.jsp</em>.
      * The <em>Car<em> object create is exposed to the <em>anotherPage.jsp</em>
-     * and might be accessed using Expression Language. The naming convetion
+     * and might be accessed using Expression Language. The naming convention
 	 * used to expose the object is the class name in camel case. Ex: <pre>${car.brand}</pre>
 	 *
 	 * @return Car
@@ -62,7 +62,7 @@ public class Home {
 	 * The folder/jsp are named after the business controller class/method been called, respectively.
 	 * Ex: <em>WEB-INF/pages/Home/save.jsp</em«
 	 * The returned <em>Car<em> object is exposed to the <em>save.jsp</em>
-	 * and might be accessed using Expresion Language. The naming convetion
+	 * and might be accessed using Expression Language. The naming convention
 	 * used to expose the object is the class name in camel case. Ex: <pre>${car.brand}</pre>
 	 *
 	 * @return Car

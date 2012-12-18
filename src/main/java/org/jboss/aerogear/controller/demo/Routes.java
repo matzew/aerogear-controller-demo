@@ -24,7 +24,7 @@ import org.jboss.aerogear.security.model.AeroGearUser;
 
 /**
  * Routes are the core of aerogear-controller–demo.
- * It's where we bind the the application bussines controller {@link Home}
+ * It's where we bind the the application business controller {@link Home}
  * to the URL it responds.<br>
  * All the configuration is done with a type safe DSL.
  *

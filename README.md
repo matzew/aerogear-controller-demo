@@ -8,7 +8,7 @@
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-controller</artifactId>
-            <version>1.0.0.M1-20121203-SNAPSHOT</version>
+            <version>1.0.0.M1-20121217-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
@@ -26,9 +26,9 @@
         @Override
         public void configuration() {
             route()
-                    .from("/")
-                    .on(RequestMethod.GET)
-                    .to(Home.class).index();
+                   .from("/")
+                   .on(RequestMethod.GET)
+                   .to(Home.class).index();
             }
         }
 
@@ -54,9 +54,9 @@ You can use immutable beans straight away as controller parameters:
 This can be populated by putting a route to it (preferrably via post, of course)
 
         route()
-            .from("/cars")
-            .on(RequestMethod.POST)
-            .to(Store.class).save(param(Car.class));
+               .from("/cars")
+               .on(RequestMethod.POST)
+               .to(Store.class).save(param(Car.class));
 
 
 And you can use a simple html form for it, by just following the convention:
@@ -69,3 +69,7 @@ The car object will be automatically populated with the provided values - note t
             <input type="text" name="car.brand.owner"/>
 
 All the intermediate objects are created automatically.
+
+### resources
+1. [aerogear-controller](https://github.com/aerogear/aerogear-controller)
+1. [aerogear.org](http://aerogear.org/)

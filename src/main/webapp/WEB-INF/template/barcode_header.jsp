@@ -43,7 +43,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/jquery-1.8.3.min.js"></script>
     <script src="js/jquery.qrcode.min.js"></script>
     <script src="js/otp.js"></script>
 

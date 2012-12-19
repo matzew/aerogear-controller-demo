@@ -5,7 +5,7 @@
 
     <groupId>org.jboss.aerogear</groupId>
     <artifactId>aerogear-controller-demo</artifactId>
-    <version>1.0.0.M1.20121217-SNAPSHOT</version>
+    <version>1.0.0.M1</version>
     <packaging>war</packaging>
     <name>AeroGear Controller Demo</name>
 
@@ -30,10 +30,10 @@
         <javaee6.bom.version>1.0.0.M3</javaee6.bom.version>
 
         <!-- Define the version of AeroGear APIs we want to import -->
-        <aerogear.controller.version>1.0.0.M1-20121218-SNAPSHOT</aerogear.controller.version>
-        <aerogear.security.version>1.0.0.M1-20121218-SNAPSHOT</aerogear.security.version>
-        <aerogear.security.picketbox.version>1.0.0.M1-20121218-SNAPSHOT</aerogear.security.picketbox.version>
-        <aerogear.otp.version>1.0.0.M1-20121217-SNAPSHOT</aerogear.otp.version>
+        <aerogear.controller.version>1.0.0.M1</aerogear.controller.version>
+        <aerogear.security.version>1.0.0.M1</aerogear.security.version>
+        <aerogear.security.picketbox.version>1.0.0.M1</aerogear.security.picketbox.version>
+        <aerogear.otp.version>1.0.0.M1</aerogear.otp.version>
     </properties>
 
     <dependencyManagement>

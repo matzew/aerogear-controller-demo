@@ -58,12 +58,13 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/cars")
                 .on(RequestMethod.POST)
-                .produces(MediaType.JSON, MediaType.HTML)
+                .consumes(MediaType.JSON, MediaType.HTML)
+                .produces(MediaType.JSON.toString(), MediaType.HTML.toString(), "application/custom")
                 .to(Home.class).save(param(Car.class));
         route()
                 .from("/cars")
                 .on(RequestMethod.GET)
-                .produces(MediaType.JSON.toString(), "application/custom")
+                .produces(MediaType.JSON.toString(), "application/custom", MediaType.HTML.toString())
                 .to(Home.class).get(param("color", "pink"), param("brand", "mini"));
         route()
                 .from("/login")

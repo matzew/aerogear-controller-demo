@@ -35,24 +35,24 @@
 
     <!-- CSS
    ================================================== -->
-    <link rel="stylesheet" href="stylesheets/base.css">
-    <link rel="stylesheet" href="stylesheets/skeleton.css">
-    <link rel="stylesheet" href="stylesheets/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stylesheets/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stylesheets/skeleton.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stylesheets/layout.css">
 
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/jquery.qrcode.min.js"></script>
-    <script src="js/otp.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.8.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.qrcode.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/otp.js"></script>
 
     <!-- Favicons
      ================================================== -->
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico">
+    <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/images/apple-touch-icon-114x114.png">
 
 </head>
 <body>

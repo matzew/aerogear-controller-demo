@@ -45,6 +45,7 @@ public class Routes extends AbstractRoutingModule {
                 .to(Error.class).security();
         route()
                 .on(Exception.class)
+                .produces(MediaType.HTML, MediaType.JSON)
                 .to(Error.class).index(param(Exception.class));
         route()
                 .from("/")
@@ -91,6 +92,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/throwException")
                 .on(RequestMethod.GET)
+                .produces(MediaType.HTML, MediaType.JSON)
                 .to(Error.class).throwException();
     }
 }

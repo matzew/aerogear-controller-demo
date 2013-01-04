@@ -2,8 +2,9 @@ package org.jboss.aerogear.controller.demo;
 
 public class Error {
 
-    public void index(Exception e) {
+    public String index(Exception e) {
         System.out.println("[Error] " + e);
+        return "{exception:" + e.getMessage() + "}";
     }
 
     public void security() {

@@ -12,8 +12,8 @@
     <div class="sixteen columns">
         <form action="cars" method="post">
             <ul>
-                <li><label>Color:</label><input type="text" name="car.color"/></li>
-                <li><label>Brand:</label><input type="text" name="car.brand"/></li>
+                <li><label>Color:</label><input autocomplete="off" type="text" name="car.color"/></li>
+                <li><label>Brand:</label><input autocomplete="off" type="text" name="car.brand"/></li>
                 <li><input type="submit"/></li>
             </ul>
         </form>

@@ -35,7 +35,7 @@
         <div id="qrcode-div"></div>
         <form action="otp" method="post">
             <label>OTP:</label>
-            <input type="text" name="aeroGearUser.otp"/>
+            <input autocomplete="off" type="password" name="aeroGearUser.otp"/>
             <input type="submit"/>
 
         </form>

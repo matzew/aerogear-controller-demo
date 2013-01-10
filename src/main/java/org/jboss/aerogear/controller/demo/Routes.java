@@ -21,6 +21,9 @@ import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.controller.router.MediaType;
 import org.jboss.aerogear.controller.router.RequestMethod;
+import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterException;
+import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
+import org.jboss.aerogear.controller.router.rest.pagination.PagingRequestException;
 import org.jboss.aerogear.security.exception.AeroGearSecurityException;
 import org.jboss.aerogear.security.model.AeroGearUser;
 
@@ -39,8 +42,20 @@ public class Routes extends AbstractRoutingModule {
      * Entry point for configuring the routes mapping http requests to the pojo controllers
      */
     @Override
-    public void configuration() {
+    public void configuration() throws Exception {
 
+        route()
+                .on(CarNotFoundException.class)
+                .produces(MediaType.JSON)
+                .to(Error.class).respondWithErrorStatus(param(CarNotFoundException.class));
+        route()
+                .on(PagingRequestException.class)
+                .produces(MediaType.JSON)
+                .to(Error.class).handlePagingRequestException(param(PagingRequestException.class));
+        route()
+                .on(MissingRequestParameterException.class)
+                .produces(MediaType.JSON)
+                .to(Error.class).handleMissingRequestParameter(param(MissingRequestParameterException.class));
         route()
                 .on(AeroGearSecurityException.class)
                 .to(Error.class).security();
@@ -61,12 +76,17 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .consumes(MediaType.JSON.getMediaType(), MediaType.HTML.getMediaType())
                 .produces(MediaType.JSON, MediaType.JSP, CustomMediaTypeResponder.MEDIA_TYPE)
-                .to(Home.class).save(param(Car.class));
+                .to(Cars.class).save(param(Car.class));
         route()
                 .from("/cars")
                 .on(RequestMethod.GET)
-                .produces(MediaType.JSON, CustomMediaTypeResponder.MEDIA_TYPE, MediaType.JSP)
-                .to(Home.class).get(param("color", "pink"), param("brand", "mini"));
+                .produces(MediaType.JSON, CustomMediaTypeResponder.MEDIA_TYPE)
+                .to(Cars.class).findCarsBy(param(PaginationInfo.class), param("color"));
+        route()
+                .from("/cars/{id}")
+                .on(RequestMethod.GET)
+                .produces(MediaType.JSON)
+                .to(Cars.class).findById(param("id"));
         route()
                 .from("/login")
                 .on(RequestMethod.GET)

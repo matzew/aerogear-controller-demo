@@ -17,10 +17,17 @@
 
 package org.jboss.aerogear.controller.demo;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.jboss.aerogear.controller.router.error.ErrorResponse;
+import org.jboss.aerogear.controller.router.error.JsonErrorResponse;
+import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterException;
+import org.jboss.aerogear.controller.router.rest.pagination.PagingRequestException;
+
 public class Error {
 
     public String index(Exception e) {
-        System.out.println("[Error] " + e);
+        System.out.println("[Demo Error handler :" + e.getMessage());
         return "{exception:" + e.getMessage() + "}";
     }
 
@@ -29,5 +36,17 @@ public class Error {
 
     public void throwException() {
         throw new RuntimeException("Demo Exception");
+    }
+
+    public ErrorResponse respondWithErrorStatus(final CarNotFoundException e) {
+        return new JsonErrorResponse(e.getStatus()).message("error", e.getMessage());
+    }
+    
+    public ErrorResponse handlePagingRequestException(final PagingRequestException e) {
+        return new JsonErrorResponse(HttpServletResponse.SC_BAD_REQUEST).message("error", e.getMessage());
+    }
+    
+    public ErrorResponse handleMissingRequestParameter(final MissingRequestParameterException e) {
+        return new JsonErrorResponse(HttpServletResponse.SC_BAD_REQUEST).message("error", e.getMessage());
     }
 }

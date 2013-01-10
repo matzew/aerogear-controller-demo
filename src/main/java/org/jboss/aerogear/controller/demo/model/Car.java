@@ -16,15 +16,35 @@
  */
 package org.jboss.aerogear.controller.demo.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * The model car is an immutable object that represents our domain.
  */
+@Entity
 public class Car {
+    
+    @Id
+    @SequenceGenerator( name = "seq", sequenceName = "CAR_SEQ", allocationSize = 1, initialValue = 1 )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "seq" )
+    private Long id;
+    
+    @Column
     private String color;
+    
+    @Column
     private String brand;
+    
+    public Car() {
+    }
 
     @JsonCreator
     public Car(@JsonProperty("color") final String color, @JsonProperty("brand") final String brand) {
@@ -42,10 +62,23 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car[" +
-                "color='" + color + '\'' +
-                ", brand='" + brand + '\'' +
-                ']';
-
+        return "Car[id='" + id + '\'' + "color='" + color + '\'' + ", brand='" + brand + '\'' + ']';
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+    
 }

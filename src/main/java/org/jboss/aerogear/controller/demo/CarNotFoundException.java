@@ -16,9 +16,18 @@
  */
 package org.jboss.aerogear.controller.demo;
 
-public class Html {
+public class CarNotFoundException extends Exception {
+
+    private static final long serialVersionUID = 1L;
+    private int status;
+
+    public CarNotFoundException(String message, int status) {
+        super(message);
+        this.status = status;
+    }
     
-    public void index() {
+    public int getStatus() {
+        return status;
     }
 
 }

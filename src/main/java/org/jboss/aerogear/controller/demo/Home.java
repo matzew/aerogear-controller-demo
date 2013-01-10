@@ -56,23 +56,4 @@ public class Home {
         return new Car("silver", "delorean");
     }
 
-	/**
-	 * Respond to a POST request "/cars". The response page follow
-	 * a convention, having a <em>folder/jsp</em> at the directory <em>WEB-INF/pages</em>.
-	 * The folder/jsp are named after the business controller class/method been called, respectively.
-	 * Ex: <em>WEB-INF/pages/Home/save.jsp</em«
-	 * The returned <em>Car<em> object is exposed to the <em>save.jsp</em>
-	 * and might be accessed using Expression Language. The naming convention
-	 * used to expose the object is the class name in camel case. Ex: <pre>${car.brand}</pre>
-	 *
-	 * @return Car
-	 * @see Routes
-	 */
-    public Car save(Car car) {
-        return car;
-    }
-    
-    public Car get(String color, String brand) {
-        return new Car(color, brand);
-    }
 }

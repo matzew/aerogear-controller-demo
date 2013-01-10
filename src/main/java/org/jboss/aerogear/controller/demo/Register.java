@@ -23,7 +23,7 @@ public class Register {
     }
 
     public AeroGearUser register(AeroGearUser user) {
-
+        configuration.create(user);
         configuration.grant(DEFAULT_ROLE).to(user);
         authenticationManager.login(user);
         return user;

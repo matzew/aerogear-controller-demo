@@ -95,5 +95,23 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.GET)
                 .produces(MediaType.HTML, MediaType.JSON)
                 .to(Error.class).throwException();
+        route()
+                .from("/admin").roles("admin")
+                .on(RequestMethod.GET)
+                .to(Admin.class).index();
+        route()
+                .from("/admin").roles("admin")
+                .on(RequestMethod.POST)
+                .to(Admin.class).register(param(AeroGearUser.class));
+
+        route()
+                .from("/show/{id}").roles("admin")
+                .on(RequestMethod.GET)
+                .to(Admin.class).show(param("id"));
+        route()
+                .from("/show/remove").roles("admin")
+                .on(RequestMethod.POST)
+                .to(Admin.class).remove(param(AeroGearUser.class));
+
     }
 }

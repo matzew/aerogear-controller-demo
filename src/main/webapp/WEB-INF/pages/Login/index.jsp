@@ -6,6 +6,7 @@
     </div>
     <div class="sixteen columns">
         <p>maybe you should try the <a href="delorean">restricted delorean page</a></p>
+        <p>you can also try the <a href="admin">restricted admin page</a></p>
     </div>
     <div class="sixteen columns">
         <form action="login" method="post">

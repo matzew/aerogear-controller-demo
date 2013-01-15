@@ -16,6 +16,7 @@
  */
 package org.jboss.aerogear.controller.demo;
 
+import org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder;
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.controller.router.MediaType;
@@ -45,7 +46,7 @@ public class Routes extends AbstractRoutingModule {
                 .to(Error.class).security();
         route()
                 .on(Exception.class)
-                .produces(MediaType.HTML, MediaType.JSON)
+                .produces(MediaType.JSP, MediaType.JSON)
                 .to(Error.class).index(param(Exception.class));
         route()
                 .from("/")
@@ -58,13 +59,13 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/cars")
                 .on(RequestMethod.POST)
-                .consumes(MediaType.JSON, MediaType.HTML)
-                .produces(MediaType.JSON.toString(), MediaType.HTML.toString(), "application/custom")
+                .consumes(MediaType.JSON.getMediaType(), MediaType.HTML.getMediaType())
+                .produces(MediaType.JSON, MediaType.JSP, CustomMediaTypeResponder.MEDIA_TYPE)
                 .to(Home.class).save(param(Car.class));
         route()
                 .from("/cars")
                 .on(RequestMethod.GET)
-                .produces(MediaType.JSON.toString(), "application/custom", MediaType.HTML.toString())
+                .produces(MediaType.JSON, CustomMediaTypeResponder.MEDIA_TYPE, MediaType.JSP)
                 .to(Home.class).get(param("color", "pink"), param("brand", "mini"));
         route()
                 .from("/login")
@@ -93,7 +94,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/throwException")
                 .on(RequestMethod.GET)
-                .produces(MediaType.HTML, MediaType.JSON)
+                .produces(MediaType.JSP, MediaType.JSON)
                 .to(Error.class).throwException();
         route()
                 .from("/admin").roles("admin")
@@ -112,6 +113,10 @@ public class Routes extends AbstractRoutingModule {
                 .from("/show/remove").roles("admin")
                 .on(RequestMethod.POST)
                 .to(Admin.class).remove(param(AeroGearUser.class));
-
+        route()
+                .from("/html")
+                .on(RequestMethod.GET)
+                .produces(MediaType.HTML)
+                .to(Html.class).index();
     }
 }

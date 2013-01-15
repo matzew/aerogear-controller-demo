@@ -14,23 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.jboss.aerogear.controller.demo;
 
-package org.jboss.aerogear.controller.demo.config;
-
-import org.jboss.aerogear.controller.router.MediaType;
-import org.jboss.aerogear.controller.router.RouteContext;
-import org.jboss.aerogear.controller.router.rest.AbstractRestResponder;
-
-public class CustomMediaTypeResponder extends AbstractRestResponder {
+public class Html {
     
-    public static final MediaType MEDIA_TYPE = new MediaType("application/custom", CustomMediaTypeResponder.class);
-
-    public CustomMediaTypeResponder() {
-        super(MEDIA_TYPE);
-    }
-
-    public void writeResponse(Object entity, RouteContext routeContext) throws Exception {
-        routeContext.getResponse().getWriter().write("CustomMediaTypeResponder returned: " + entity);
+    public void index() {
+        
     }
 
 }

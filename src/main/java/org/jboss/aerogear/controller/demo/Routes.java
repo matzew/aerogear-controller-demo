@@ -16,7 +16,7 @@
  */
 package org.jboss.aerogear.controller.demo;
 
-import org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder;
+import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.controller.router.MediaType;
@@ -46,22 +46,22 @@ public class Routes extends AbstractRoutingModule {
 
         route()
                 .on(CarNotFoundException.class)
-                .produces(MediaType.JSON)
+                .produces(JSON)
                 .to(Error.class).respondWithErrorStatus(param(CarNotFoundException.class));
         route()
                 .on(PagingRequestException.class)
-                .produces(MediaType.JSON)
+                .produces(JSON)
                 .to(Error.class).handlePagingRequestException(param(PagingRequestException.class));
         route()
                 .on(MissingRequestParameterException.class)
-                .produces(MediaType.JSON)
+                .produces(JSON)
                 .to(Error.class).handleMissingRequestParameter(param(MissingRequestParameterException.class));
         route()
                 .on(AeroGearSecurityException.class)
                 .to(Error.class).security();
         route()
                 .on(Exception.class)
-                .produces(MediaType.JSP, MediaType.JSON)
+                .produces(JSP, JSON)
                 .to(Error.class).index(param(Exception.class));
         route()
                 .from("/")
@@ -74,14 +74,19 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/cars")
                 .on(RequestMethod.POST)
-                .consumes(MediaType.JSON.getMediaType(), MediaType.HTML.getMediaType())
-                .produces(MediaType.JSON, MediaType.JSP, CustomMediaTypeResponder.MEDIA_TYPE)
+                .consumes(JSON, HTML)
+                .produces(JSON, JSP, CUSTOM_MEDIA_TYPE)
                 .to(Cars.class).save(param(Car.class));
         route()
                 .from("/cars")
                 .on(RequestMethod.GET)
-                .produces(MediaType.JSON, CustomMediaTypeResponder.MEDIA_TYPE)
+                .produces(JSON, CUSTOM_MEDIA_TYPE)
                 .to(Cars.class).findCarsBy(param(PaginationInfo.class), param("color"));
+        route()
+                .from("/cars-custom")
+                .on(RequestMethod.GET)
+                .produces(JSON, CUSTOM_MEDIA_TYPE)
+                .to(Cars.class).findCarsByCustomHeaders(param(PaginationInfo.class), param("color"));
         route()
                 .from("/cars/{id}")
                 .on(RequestMethod.GET)
@@ -114,7 +119,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/throwException")
                 .on(RequestMethod.GET)
-                .produces(MediaType.JSP, MediaType.JSON)
+                .produces(JSP, JSON)
                 .to(Error.class).throwException();
         route()
                 .from("/admin").roles("admin")
@@ -124,7 +129,6 @@ public class Routes extends AbstractRoutingModule {
                 .from("/admin").roles("admin")
                 .on(RequestMethod.POST)
                 .to(Admin.class).register(param(AeroGearUser.class));
-
         route()
                 .from("/show/{id}").roles("admin")
                 .on(RequestMethod.GET)
@@ -136,7 +140,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/html")
                 .on(RequestMethod.GET)
-                .produces(MediaType.HTML)
+                .produces(HTML)
                 .to(Html.class).index();
     }
 }

@@ -85,6 +85,11 @@ public class Cars {
         return getCars(paginationInfo.getOffset(), color, paginationInfo.getLimit());
     }
     
+    @Paginated (webLinking = false)
+    public List<Car> findCarsByCustomHeaders(final PaginationInfo paginationInfo, final String color) {
+        return getCars(paginationInfo.getOffset(), color, paginationInfo.getLimit());
+    }
+    
     private List<Car> getCars(final int offset, final String color, final int limit) {
         final EntityManager em = emf.createEntityManager();
         try {

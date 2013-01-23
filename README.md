@@ -70,6 +70,33 @@ The car object will be automatically populated with the provided values - note t
 
 All the intermediate objects are created automatically.
 
+----
+
+### pagination ###
+There are two routes in this demo that support pagination of data. Both respond with ```cars``` and with the difference that one
+uses [Web Linking](http://tools.ietf.org/html/rfc5988), and the other used custom HTTP headers to provide links to the next and previous pages as appropriate.  
+
+#### web linking
+This is the default in AeroGear Controller and you configure your endpoint similar to this example:
+
+    @Paginated 
+    public List<Car> findCarsBy(final PaginationInfo paginationInfo, final String color) {
+        return getCars(paginationInfo.getOffset(), color, paginationInfo.getLimit());
+    }
+    
+#### custom headers
+To use custom headers you simply need to disable Web Linking:
+
+    @Paginated (webLinking = false)
+    public List<Car> findCarsByCustomHeaders(final PaginationInfo paginationInfo, final String color) {
+        return getCars(paginationInfo.getOffset(), color, paginationInfo.getLimit());
+    }
+    
+The Paginated annotation can be further customized, for example the name of the
+query parameters used, their default values if they are missing from the request, and a custom header prefix. 
+Please refer to [Paginated](https://github.com/aerogear/aerogear-controller/tree/master/src/main/java/org/jboss/aerogear/controller/router/rest/pagination/Paginated.java)
+JavaDoc for more information.
+
 ### resources
 1. [aerogear-controller](https://github.com/aerogear/aerogear-controller)
 1. [aerogear.org](http://aerogear.org/)

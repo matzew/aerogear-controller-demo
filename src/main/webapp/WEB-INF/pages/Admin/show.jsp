@@ -25,8 +25,8 @@
     </div>
     <div class="sixteen columns">
         <form action="remove" method="post">
-            <p>${aeroGearUser.id}</p>
-            <input type="hidden" id="aeroGearUser.id" name="aeroGearUser.id" value="${aeroGearUser.id}">
+            <p>${aeroGearUser.username}</p>
+            <input type="hidden" id="aeroGearUser.username" name="aeroGearUser.username" value="${aeroGearUser.username}">
             <input type="submit" value="Delete"/> or go <a href="../admin">back</a>.
         </form>
 

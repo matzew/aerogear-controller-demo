@@ -26,11 +26,11 @@ import org.jboss.aerogear.controller.router.decorators.cors.CorsConfiguration;
  * CorsConfigProducer is the CDI way of configuring CORS in AeroGear Controller.
  */
 public class CorsConfigProducer {
-    
+
     /**
      * Produces a {@link CorsConfiguration} instance which will be used to configure the
      * CORS support.
-     * 
+     *
      * @return {@link CorsConfiguration} with the CORS settings desired.
      */
     @Produces
@@ -40,7 +40,11 @@ public class CorsConfigProducer {
                 .enableCookies()
                 .maxAge(20)
                 .enableAllRequestMethods()
-                .build();
+                .validRequestHeaders("accept, origin, content-type, " +
+                        "link, ag-links-next, ag-links-previous, " +
+                        "Link, AG-Links-Next, AG-Links-Previous," +
+                        "Access-Control-Allow-Headers: ????, " +
+                        "Access-Control-Expose-Headers: ????");
     }
 
 }

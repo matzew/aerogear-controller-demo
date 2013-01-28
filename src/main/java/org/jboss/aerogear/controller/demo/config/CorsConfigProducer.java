@@ -38,9 +38,10 @@ public class CorsConfigProducer {
         return CorsConfig.enableCorsSupport()
                 .anyOrigin()
                 .enableCookies()
+                .exposeHeaders("accept", "origin", "content-type", "link", "ag-links-next", "ag-links-previous")
                 .maxAge(20)
                 .enableAllRequestMethods()
-                .build();
+                .validRequestHeaders("accept", "origin", "content-type", "link", "ag-links-next", "ag-links-previous");
     }
 
 }

@@ -27,7 +27,7 @@ import javax.inject.Inject;
 @Stateless
 public class Register {
 
-    public static final String DEFAULT_ROLE = "admin";
+    public static final String DEFAULT_ROLE = "simple";
 
     @Inject
     private IdentityManagement configuration;

@@ -37,6 +37,9 @@ public class Login {
     }
 
     public AeroGearUser login(AeroGearUser user) {
+        if (authenticationManager.isSubjectLoggedIn()) {
+            authenticationManager.logout();
+        }
         authenticationManager.login(user);
         return user;
     }

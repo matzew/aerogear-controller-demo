@@ -40,7 +40,6 @@
             <input type="submit"/>
 
         </form>
-
     </div>
 </div>
 <jsp:include page="../../template/footer.jsp" />

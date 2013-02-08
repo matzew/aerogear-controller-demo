@@ -49,7 +49,6 @@
         <!-- Define the version of AeroGear APIs we want to import -->
         <aerogear.controller.version>1.0.0.CR1-SNAPSHOT</aerogear.controller.version>
         <aerogear.security.version>1.0.0.CR1-SNAPSHOT</aerogear.security.version>
-        <aerogear.security.picketbox.version>1.0.0.CR1-SNAPSHOT</aerogear.security.picketbox.version>
         <aerogear.otp.version>1.0.0.CR1-SNAPSHOT</aerogear.otp.version>
     </properties>
 
@@ -90,7 +89,7 @@
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-security-picketbox</artifactId>
-            <version>${aerogear.security.picketbox.version}</version>
+            <version>${aerogear.security.version}</version>
             <scope>compile</scope>
         </dependency>
 

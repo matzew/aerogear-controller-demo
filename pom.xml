@@ -89,7 +89,7 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
-            <artifactId>aerogear-security-picketbox</artifactId>
+            <artifactId>aerogear-security-picketlink</artifactId>
             <version>${aerogear.security.picketbox.version}</version>
             <scope>compile</scope>
         </dependency>

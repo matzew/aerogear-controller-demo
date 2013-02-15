@@ -38,7 +38,7 @@ import java.util.logging.Logger;
 public class Resources {
 
     @SuppressWarnings("unused")
-    @PersistenceContext(unitName = "picketlink-default", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "cars")
     private EntityManager entityManager;
 
     @Produces

@@ -47,10 +47,10 @@
         <javaee6.bom.version>1.0.0.Final</javaee6.bom.version>
 
         <!-- Define the version of AeroGear APIs we want to import -->
-        <aerogear.controller.version>1.0.0.CR1-SNAPSHOT</aerogear.controller.version>
-        <aerogear.security.version>1.0.0.M8</aerogear.security.version>
-        <aerogear.security.picketbox.version>1.0.0.M8</aerogear.security.picketbox.version>
+        <aerogear.controller.version>1.0.0.M8</aerogear.controller.version>
         <aerogear.otp.version>1.0.0.M8</aerogear.otp.version>
+        <aerogear.security.version>1.0.0.CR1-SNAPSHOT</aerogear.security.version>
+
     </properties>
 
     <dependencyManagement>
@@ -90,7 +90,7 @@
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-security-picketlink</artifactId>
-            <version>${aerogear.security.picketbox.version}</version>
+            <version>${aerogear.security.version}</version>
             <scope>compile</scope>
         </dependency>
 

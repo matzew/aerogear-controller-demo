@@ -23,4 +23,30 @@
             <http-only>true</http-only>
         </cookie-config>
     </session-config>
+
+    <filter>
+        <filter-name>BasicAuthenticationFilter</filter-name>
+        <filter-class>org.picketlink.authentication.web.AuthenticationFilter</filter-class>
+        <init-param>
+            <param-name>authType</param-name>
+            <param-value>BASIC</param-value>
+        </init-param>
+    </filter>
+    <filter>
+        <filter-name>DigestAuthenticationFilter</filter-name>
+        <filter-class>org.picketlink.authentication.web.AuthenticationFilter</filter-class>
+        <init-param>
+            <param-name>authType</param-name>
+            <param-value>DIGEST</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>BasicAuthenticationFilter</filter-name>
+        <url-pattern>/mycars/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>DigestAuthenticationFilter</filter-name>
+        <url-pattern>/mycars/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

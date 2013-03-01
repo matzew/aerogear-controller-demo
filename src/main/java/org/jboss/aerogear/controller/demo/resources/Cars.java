@@ -105,7 +105,6 @@ public class Cars {
         }
     }
 
-    //Only to demonstrate HSTS feature
     public List<String> mycars() {
         return Arrays.asList(new String[]{"Canyonero", "Bandit", "Truckasaurus", "Slackzda", "Lazyda"});
     }

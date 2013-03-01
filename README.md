@@ -62,6 +62,14 @@ However, this demo uses a datasource that by default exists in JBoss AS 7.x and 
     $ cd $AS7_HOME
     $ ./jboss-cli.sh --connect
     $ [standalone@localhost:9999 /] deploy /path/to/aerogear-controller-demo/target/aerogear-controller-demo.war
+
+#### Testing Basic authentication
+
+curl -v --basic -u john:123 "http://localhost:8080/aerogear-controller-demo/mycars"
+
+#### Testing Digest authentication
+
+curl -v --digest -u john:123 "http://localhost:8080/aerogear-controller-demo/mycars"
      
 ## Documentation
 * [User Guide](http://aergear.org/docs/guides/aerogear-controller)

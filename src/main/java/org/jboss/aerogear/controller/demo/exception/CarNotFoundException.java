@@ -14,11 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.controller.demo;
+package org.jboss.aerogear.controller.demo.exception;
 
-public class Html {
+public class CarNotFoundException extends Exception {
+
+    private static final long serialVersionUID = 1L;
+    private int status;
+
+    public CarNotFoundException(String message, int status) {
+        super(message);
+        this.status = status;
+    }
     
-    public void index() {
+    public int getStatus() {
+        return status;
     }
 
 }

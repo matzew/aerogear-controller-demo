@@ -24,7 +24,7 @@
     </div>
     <div class="sixteen columns">
         <p>maybe you should try the <a href="delorean">delorean page</a></p>
-        hello ${aeroGearUser.username} to the authentication page!
+        hello ${simpleUser.loginName} to the authentication page!
         <p> <a href="logout">Logout</a></p>
     </div>
 </div>

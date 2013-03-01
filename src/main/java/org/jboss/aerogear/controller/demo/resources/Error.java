@@ -15,10 +15,11 @@
  * limitations under the License.
  */
 
-package org.jboss.aerogear.controller.demo;
+package org.jboss.aerogear.controller.demo.resources;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.jboss.aerogear.controller.demo.exception.CarNotFoundException;
 import org.jboss.aerogear.controller.router.error.ErrorResponse;
 import org.jboss.aerogear.controller.router.error.JsonErrorResponse;
 import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterException;

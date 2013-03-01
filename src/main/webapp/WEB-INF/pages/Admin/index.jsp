@@ -29,9 +29,9 @@
     <div class="sixteen columns">
     <form action="admin" method="post">
         <label>Username:</label>
-        <input type="text" name="aeroGearUser.username"/>
+        <input type="text" name="simpleUser.loginName"/>
         <label>Password:</label>
-        <input type="password" name="aeroGearUser.password"/>
+        <input type="password" name="password"/>
         <input type="submit"/>
     </form>
     </div>
@@ -39,7 +39,7 @@
         <p>This is the list of registered users :</p>
        <ul>
             <c:forEach var="user" items="${arrayList}">
-                <li><a href="show/${user.username}">${user.username}</a></li>
+                <li><a href="show/${user.loginName}">${user.loginName}</a></li>
             </c:forEach>
        </ul>
     </div>

@@ -23,26 +23,4 @@
             <http-only>true</http-only>
         </cookie-config>
     </session-config>
-
-    <filter>
-        <filter-name>StrictTransportFilter</filter-name>
-        <filter-class>org.jboss.aerogear.security.filter.StrictTransportFilter</filter-class>
-        <init-param>
-            <param-name>max-age</param-name>
-            <param-value>2592000</param-value>
-        </init-param>
-        <init-param>
-            <param-name>include-subdomains</param-name>
-            <param-value>false</param-value>
-        </init-param>
-        <init-param>
-            <param-name>location</param-name>
-            <param-value>https://localhost:8443/aerogear-controller-demo/mycars</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>StrictTransportFilter</filter-name>
-        <url-pattern>/mycars</url-pattern>
-    </filter-mapping>
-
 </web-app>

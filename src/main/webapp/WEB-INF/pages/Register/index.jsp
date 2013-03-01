@@ -29,9 +29,9 @@
         <form action="register" method="post">
 
             <label>Username:</label>
-            <input autocomplete="off" type="text" name="aeroGearUser.username"/>
+            <input autocomplete="off" type="text" name="simpleUser.loginName"/>
             <label>Password:</label>
-            <input autocomplete="off" type="password" name="aeroGearUser.password"/>
+            <input autocomplete="off" type="password" name="password"/>
             <input type="submit"/>
 
         </form>

@@ -49,7 +49,9 @@
         <!-- Define the version of AeroGear APIs we want to import -->
         <aerogear.controller.version>1.0.0.CR1-28022013-SNAPSHOT</aerogear.controller.version>
         <aerogear.otp.version>1.0.0.M8</aerogear.otp.version>
-        <aerogear.security.version>1.0.0.CR1-28022013-SNAPSHOT</aerogear.security.version>
+
+        <!-- Define the version of PicketLink APIs we want to import -->
+        <picketlink.version>3.0.0-SNAPSHOT</picketlink.version>
 
     </properties>
 
@@ -75,22 +77,45 @@
 
     <dependencies>
 
+        <!-- PicketLink -->
+        <dependency>
+            <groupId>org.picketlink</groupId>
+            <artifactId>picketlink-core-api</artifactId>
+            <version>${picketlink.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.picketlink</groupId>
+            <artifactId>picketlink-core-impl</artifactId>
+            <version>${picketlink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.picketlink</groupId>
+            <artifactId>picketlink-idm-api</artifactId>
+            <version>${picketlink.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.picketlink</groupId>
+            <artifactId>picketlink-idm-impl</artifactId>
+            <version>${picketlink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.picketlink</groupId>
+            <artifactId>picketlink-idm-schema</artifactId>
+            <version>${picketlink.version}</version>
+        </dependency>
+
+        <!-- end -->
+
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-controller</artifactId>
             <version>${aerogear.controller.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.aerogear</groupId>
-            <artifactId>aerogear-security</artifactId>
-            <version>${aerogear.security.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.aerogear</groupId>
-            <artifactId>aerogear-security-picketlink</artifactId>
-            <version>${aerogear.security.version}</version>
             <scope>compile</scope>
         </dependency>
 

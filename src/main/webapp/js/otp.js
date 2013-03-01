@@ -25,7 +25,7 @@ $( document ).ready( function() {
 	        type:'GET', 
 	        success:function (data) {
                 console.log(data.uri);
-                $('#qrcode-div').qrcode(data.uri);
+                $('#qrcode-div').qrcode(data);
             }
 	    });
 	});

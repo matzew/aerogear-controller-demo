@@ -16,18 +16,27 @@
  */
 package org.jboss.aerogear.controller.demo;
 
-import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
-
+import org.jboss.aerogear.controller.demo.exception.CarNotFoundException;
+import org.jboss.aerogear.controller.demo.exception.HttpSecurityException;
 import org.jboss.aerogear.controller.demo.model.Car;
+import org.jboss.aerogear.controller.demo.resources.Admin;
+import org.jboss.aerogear.controller.demo.resources.Cars;
+import org.jboss.aerogear.controller.demo.resources.Error;
+import org.jboss.aerogear.controller.demo.resources.Home;
+import org.jboss.aerogear.controller.demo.resources.Html;
+import org.jboss.aerogear.controller.demo.resources.Login;
+import org.jboss.aerogear.controller.demo.resources.Otp;
+import org.jboss.aerogear.controller.demo.resources.Register;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.controller.router.MediaType;
 import org.jboss.aerogear.controller.router.RequestMethod;
 import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterException;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationRequestException;
-import org.jboss.aerogear.security.exception.AeroGearSecurityException;
-import org.jboss.aerogear.security.model.AeroGearUser;
 import org.picketlink.authentication.UnexpectedCredentialException;
+import org.picketlink.idm.model.SimpleUser;
+
+import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
 
 /**
  * Routes are the core of aerogear-controller–demo.
@@ -49,7 +58,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .on(CarNotFoundException.class)
                 .produces(JSON)
-                .to(Error.class).respondWithErrorStatus(param(CarNotFoundException.class));
+                .to(org.jboss.aerogear.controller.demo.resources.Error.class).respondWithErrorStatus(param(CarNotFoundException.class));
         route()
                 .on(PaginationRequestException.class)
                 .produces(JSON)
@@ -59,7 +68,7 @@ public class Routes extends AbstractRoutingModule {
                 .produces(JSON)
                 .to(Error.class).handleMissingRequestParameter(param(MissingRequestParameterException.class));
         route()
-                .on(AeroGearSecurityException.class)
+                .on(HttpSecurityException.class)
                 .produces(JSP, JSON)
                 .to(Error.class).security();
         /*
@@ -70,7 +79,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(UnexpectedCredentialException.class)
                 .produces(JSP)
                 .to(Error.class).alreadyLoggedIn();
-        
+
         route()
                 .on(Exception.class)
                 .produces(JSP, JSON)
@@ -119,12 +128,12 @@ public class Routes extends AbstractRoutingModule {
                 .from("/login")
                 .on(RequestMethod.POST)
                 .produces(JSP, JSON)
-                .to(Login.class).login(param(AeroGearUser.class));
+                .to(Login.class).login(param(SimpleUser.class), param("password"));
         route()
                 .from("/otp")
                 .on(RequestMethod.POST)
                 .produces(JSP, JSON)
-                .to(Otp.class).otp(param(AeroGearUser.class));
+                .to(Otp.class).otp(param(SimpleUser.class), param("otp"));
         route()
                 .from("/auth/otp/secret")
                 .on(RequestMethod.GET)
@@ -142,7 +151,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/register")
                 .on(RequestMethod.POST)
-                .to(Register.class).register(param(AeroGearUser.class));
+                .to(Register.class).register(param(SimpleUser.class), param("password"));
         route()
                 .from("/throwException")
                 .on(RequestMethod.GET)
@@ -155,7 +164,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/admin").roles("admin")
                 .on(RequestMethod.POST)
-                .to(Admin.class).register(param(AeroGearUser.class));
+                .to(Admin.class).register(param(SimpleUser.class), param("password"));
         route()
                 .from("/show/{id}").roles("admin")
                 .on(RequestMethod.GET)
@@ -163,7 +172,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/show/remove").roles("admin")
                 .on(RequestMethod.POST)
-                .to(Admin.class).remove(param(AeroGearUser.class));
+                .to(Admin.class).remove(param(SimpleUser.class));
         route()
                 .from("/html")
                 .on(RequestMethod.GET)

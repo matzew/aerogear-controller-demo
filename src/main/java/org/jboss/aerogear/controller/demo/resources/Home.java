@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.controller.demo;
+package org.jboss.aerogear.controller.demo.resources;
 
 import org.jboss.aerogear.controller.demo.model.Car;
 
@@ -24,7 +24,7 @@ import org.jboss.aerogear.controller.demo.model.Car;
  * Each method must have an associated route
  * so that it can respond to a requisition.
  *
- * @see Routes
+ * @see org.jboss.aerogear.controller.demo.Routes
  */
 public class Home {
 
@@ -33,7 +33,7 @@ public class Home {
 	 * a convention, having a <em>folder/jsp</em> at the directory <em>WEB-INF/pages</em>.
 	 * The folder/jsp are named after the business controller class/method been called, respectively.
 	 * Ex: <em>WEB-INF/pages/Home/index.jsp</em>
-	 * @see Routes
+	 * @see org.jboss.aerogear.controller.demo.Routes
 	 */
     public void index() {
         System.out.println("hello from controller");
@@ -50,7 +50,7 @@ public class Home {
 	 * used to expose the object is the class name in camel case. Ex: <pre>${car.brand}</pre>
 	 *
 	 * @return Car
-	 * @see Routes
+	 * @see org.jboss.aerogear.controller.demo.Routes
 	 */
     public Car anotherPage() {
         return new Car("silver", "delorean");

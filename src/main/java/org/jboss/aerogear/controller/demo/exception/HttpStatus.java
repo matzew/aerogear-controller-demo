@@ -14,20 +14,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.controller.demo;
 
-public class CarNotFoundException extends Exception {
+package org.jboss.aerogear.controller.demo.exception;
 
-    private static final long serialVersionUID = 1L;
+import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
+
+public enum HttpStatus {
+
+    AUTHENTICATION_FAILED("User authentication failed", UNAUTHORIZED.getStatusCode());
+
+    private String message;
     private int status;
 
-    public CarNotFoundException(String message, int status) {
-        super(message);
+    HttpStatus(String message) {
+        this.message = message;
+    }
+
+    HttpStatus(String message, int status) {
+        this.message = message;
         this.status = status;
     }
-    
-    public int getStatus() {
+
+    public int getCode() {
         return status;
     }
 
+    @Override
+    public String toString() {
+        return String.format("{message : %s }", message);
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }

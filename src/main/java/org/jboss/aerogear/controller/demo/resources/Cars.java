@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.controller.demo;
+package org.jboss.aerogear.controller.demo.resources;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,6 +27,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jboss.aerogear.controller.demo.exception.CarNotFoundException;
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.rest.pagination.Paginated;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
@@ -51,7 +52,7 @@ public class Cars {
     * used to expose the object is the class name in camel case. Ex: <pre>${car.brand}</pre>
     *
     * @return Car
-    * @see Routes
+    * @see org.jboss.aerogear.controller.demo.Routes
     */
     public Car save(final Car car) {
         final EntityManager em = emf.createEntityManager();

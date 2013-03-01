@@ -17,14 +17,16 @@
 
 package org.jboss.aerogear.controller.demo.spi;
 
+import org.jboss.aerogear.controller.demo.exception.HttpSecurityException;
+import org.jboss.aerogear.controller.demo.exception.HttpStatus;
 import org.jboss.aerogear.controller.router.Route;
 import org.jboss.aerogear.controller.spi.SecurityProvider;
-import org.jboss.aerogear.security.exception.AeroGearSecurityException;
-import org.jboss.aerogear.security.exception.HttpStatus;
-import org.jboss.aerogear.security.idm.AeroGearCredential;
+import org.picketlink.Identity;
+import org.picketlink.idm.IdentityManager;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import java.util.Set;
 
 /**
  * Security SPI for AeroGear Controller
@@ -32,19 +34,35 @@ import javax.servlet.ServletException;
 public class AeroGearSecurityProvider implements SecurityProvider {
 
     @Inject
-    private AeroGearCredential credential;
+    private Identity identity;
+
+    @Inject
+    private IdentityManager identityManager;
+
 
     /**
      * Route validation support on AeroGear Controller
+     *
      * @param route the {@link Route} for which this provider to determine access.
      * @throws ServletException
      */
     @Override
     public void isRouteAllowed(Route route) throws ServletException {
 
-        if (!credential.hasRoles(route.getRoles())) {
-            throw new AeroGearSecurityException(HttpStatus.AUTHENTICATION_FAILED);
+        if (!hasRoles(route.getRoles())) {
+            throw new HttpSecurityException(HttpStatus.AUTHENTICATION_FAILED);
         }
 
+    }
+
+    private boolean hasRoles(Set<String> roles) {
+        if (identity.isLoggedIn()) {
+            for (String role : roles) {
+                if (identityManager.hasRole(identity.getUser(), identityManager.getRole(role))) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

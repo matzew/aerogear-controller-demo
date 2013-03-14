@@ -24,6 +24,10 @@
         <hr />
     </div>
     <div class="sixteen columns">
+        <p><a href="${pageContext.request.contextPath}/logout">logout</a></p>
+        <p><a href="${pageContext.request.contextPath}/">Home</a></p>
+    </div>
+    <div class="sixteen columns">
         <form action="remove" method="post">
             <p>${simpleUser.loginName}</p>
             <input type="hidden" id="simpleUser.loginName" name="simpleUser.loginName" value="${simpleUser.loginName}">

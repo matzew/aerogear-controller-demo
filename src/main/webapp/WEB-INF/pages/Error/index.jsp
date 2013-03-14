@@ -22,6 +22,10 @@
         <hr />
     </div>
     <div class="sixteen columns">
+        <p><a href="logout">logout</a></p>
+        <p><a href=""${pageContext.request.contextPath}/">Home</a></p>
+    </div>
+    <div class="sixteen columns">
         <p>${requestScope['org.jboss.aerogear.controller.exception']}</p>
     </div>
 </div>

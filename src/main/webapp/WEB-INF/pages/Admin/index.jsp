@@ -24,6 +24,10 @@
         <hr />
     </div>
     <div class="sixteen columns">
+        <p><a href="${pageContext.request.contextPath}/logout">logout</a></p>
+        <p><a href="${pageContext.request.contextPath}/">Home</a></p>
+    </div>
+    <div class="sixteen columns">
         <p>This is the admin page! You can register users here</p>
      </div>
     <div class="sixteen columns">

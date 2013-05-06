@@ -63,7 +63,7 @@ public class Otp {
 
         if (identity.isLoggedIn()) {
 
-            User user = identity.getUser();
+            User user = (User) identity.getUser();
 
             secret = user.getAttribute(IDM_SECRET_ATTRIBUTE);
 

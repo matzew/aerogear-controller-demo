@@ -18,6 +18,7 @@
 package org.jboss.aerogear.controller.demo.config;
 
 import org.picketlink.idm.IdentityManager;
+import org.picketlink.idm.credential.Digest;
 import org.picketlink.idm.credential.Password;
 import org.picketlink.idm.model.Role;
 import org.picketlink.idm.model.SimpleRole;
@@ -55,7 +56,13 @@ public class PicketLinkLoadUsers {
          * See http://lists.jboss.org/pipermail/security-dev/2013-January/000650.html for more information
          */
         this.identityManager.add(user);
-        this.identityManager.updateCredential(user, new Password("123"));
+
+        Digest digest = new Digest();
+        digest.setRealm("default");
+        digest.setUsername(user.getLoginName());
+        digest.setPassword("123");
+
+        identityManager.updateCredential(user, digest);
 
         Role roleDeveloper = new SimpleRole("simple");
         Role roleAdmin = new SimpleRole("admin");

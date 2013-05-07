@@ -32,6 +32,10 @@
             <param-name>authType</param-name>
             <param-value>DIGEST</param-value>
         </init-param>
+        <init-param>
+            <param-name>realm</param-name>
+            <param-value>default</param-value>
+        </init-param>
     </filter>
 
     <filter-mapping>

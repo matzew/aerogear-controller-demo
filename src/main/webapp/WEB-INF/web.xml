@@ -25,7 +25,7 @@
     </session-config>
 
 
-    <filter>
+    <!-- <filter>
         <filter-name>DigestAuthenticationFilter</filter-name>
         <filter-class>org.picketlink.authentication.web.AuthenticationFilter</filter-class>
         <init-param>
@@ -41,6 +41,6 @@
     <filter-mapping>
         <filter-name>DigestAuthenticationFilter</filter-name>
         <url-pattern>/mycars/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping> -->
 
 </web-app>

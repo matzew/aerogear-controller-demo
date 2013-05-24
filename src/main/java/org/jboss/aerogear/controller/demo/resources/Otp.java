@@ -21,6 +21,7 @@ import org.jboss.aerogear.security.otp.Totp;
 import org.jboss.aerogear.security.otp.api.Base32;
 import org.picketlink.Identity;
 import org.picketlink.idm.IdentityManager;
+import org.picketlink.idm.model.Agent;
 import org.picketlink.idm.model.Attribute;
 import org.picketlink.idm.model.SimpleUser;
 import org.picketlink.idm.model.User;
@@ -42,7 +43,7 @@ public class Otp {
 
     public String secret() {
         String secret = getSecret();
-        return new Totp(secret).uri(identity.getUser().getLoginName());
+        return new Totp(secret).uri(identity.getAgent().getLoginName());
     }
 
     public User otp(SimpleUser user, String otp) {
@@ -63,7 +64,7 @@ public class Otp {
 
         if (identity.isLoggedIn()) {
 
-            User user = identity.getUser();
+            Agent user = identity.getAgent();
 
             secret = user.getAttribute(IDM_SECRET_ATTRIBUTE);
 

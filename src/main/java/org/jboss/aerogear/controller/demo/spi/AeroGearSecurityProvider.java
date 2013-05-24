@@ -58,7 +58,7 @@ public class AeroGearSecurityProvider implements SecurityProvider {
     private boolean hasRoles(Set<String> roles) {
         if (identity.isLoggedIn()) {
             for (String role : roles) {
-                if (identityManager.hasRole(identity.getUser(), identityManager.getRole(role))) {
+                if (identityManager.hasRole(identity.getAgent(), identityManager.getRole(role))) {
                     return true;
                 }
             }

@@ -51,7 +51,7 @@
         <aerogear.otp.version>1.0.0.M8</aerogear.otp.version>
 
         <!-- Define the version of PicketLink APIs we want to import -->
-        <picketlink.version>3.0.0-Alpha1</picketlink.version>
+        <picketlink.version>2.5.0.Beta3</picketlink.version>
 
     </properties>
 
@@ -66,41 +66,29 @@
             version of JUnit and TestNG recommended for use with Arquillian.
             see https://github.com/jboss/jboss-bom/tree/master/jboss-javaee-6.0-with-tools -->
             <dependency>
-               <groupId>org.jboss.bom</groupId>
-               <artifactId>jboss-javaee-6.0-with-tools</artifactId>
-               <version>${javaee6.bom.version}</version>
-               <type>pom</type>
-               <scope>import</scope>
+                <groupId>org.jboss.bom</groupId>
+                <artifactId>jboss-javaee-6.0-with-tools</artifactId>
+                <version>${javaee6.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
+    <!-- PicketLink -->
     <dependencies>
 
-        <!-- PicketLink -->
         <dependency>
             <groupId>org.picketlink</groupId>
-            <artifactId>picketlink-core-api</artifactId>
-            <version>${picketlink.version}</version>
+            <artifactId>picketlink-api</artifactId>
             <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.picketlink</groupId>
-            <artifactId>picketlink-core-impl</artifactId>
             <version>${picketlink.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.picketlink</groupId>
-            <artifactId>picketlink-idm-api</artifactId>
-            <version>${picketlink.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.picketlink</groupId>
-            <artifactId>picketlink-idm-impl</artifactId>
+            <artifactId>picketlink-impl</artifactId>
+            <scope>runtime</scope>
             <version>${picketlink.version}</version>
         </dependency>
 
@@ -111,7 +99,6 @@
         </dependency>
 
         <!-- end -->
-
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-controller</artifactId>
@@ -166,7 +153,7 @@
             <artifactId>hibernate-jpa-2.0-api</artifactId>
             <scope>provided</scope>
         </dependency>
-        
+
         <!-- Import the Servlet API, we use provided scope as the API is included
         in JBoss -->
         <dependency>
@@ -191,7 +178,7 @@
     <build>
         <!-- Set the name of the war, used as the context root when the app
       is deployed -->
-      <finalName>${project.artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>

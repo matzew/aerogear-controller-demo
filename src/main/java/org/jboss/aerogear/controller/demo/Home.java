@@ -28,30 +28,31 @@ import org.jboss.aerogear.controller.demo.model.Car;
  */
 public class Home {
 
-	/**
-	 * Respond to a GET request to "/". The response page follow
-	 * a convention, having a <em>folder/jsp</em> at the directory <em>WEB-INF/pages</em>.
-	 * The folder/jsp are named after the business controller class/method been called, respectively.
-	 * Ex: <em>WEB-INF/pages/Home/index.jsp</em>
-	 * @see Routes
-	 */
+    /**
+     * Respond to a GET request to "/". The response page follow
+     * a convention, having a <em>folder/jsp</em> at the directory <em>WEB-INF/pages</em>.
+     * The folder/jsp are named after the business controller class/method been called, respectively.
+     * Ex: <em>WEB-INF/pages/Home/index.jsp</em>
+     *
+     * @see Routes
+     */
     public void index() {
         System.out.println("hello from controller");
     }
 
-	/**
-	 * Respond to a GET request to "/delorean". The response page follow
-	 * a convention, having a <em>folder/jsp</em> at the directory <em>WEB-INF/pages</em>.
-	 * The folder/jsp are named after the business controller class/method been called, respectively.
-	 * Ex: <em>WEB-INF/pages/Home/anotherPage.jsp</em>
+    /**
+     * Respond to a GET request to "/delorean". The response page follow
+     * a convention, having a <em>folder/jsp</em> at the directory <em>WEB-INF/pages</em>.
+     * The folder/jsp are named after the business controller class/method been called, respectively.
+     * Ex: <em>WEB-INF/pages/Home/anotherPage.jsp</em>
      * redirect the answer to <em>WEB-INF/pages/Home/anotherPage.jsp</em>.
      * The <em>Car<em> object create is exposed to the <em>anotherPage.jsp</em>
      * and might be accessed using Expression Language. The naming convention
-	 * used to expose the object is the class name in camel case. Ex: <pre>${car.brand}</pre>
-	 *
-	 * @return Car
-	 * @see Routes
-	 */
+     * used to expose the object is the class name in camel case. Ex: <pre>${car.brand}</pre>
+     *
+     * @return Car
+     * @see Routes
+     */
     public Car anotherPage() {
         return new Car("silver", "delorean");
     }

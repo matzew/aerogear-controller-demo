@@ -17,29 +17,48 @@
 
 package org.jboss.aerogear.controller.demo;
 
-import org.jboss.aerogear.controller.demo.rest.ResponseHeaders;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.mgt.DefaultSecurityManager;
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.mgt.SecurityManager;
+import org.jboss.aerogear.controller.demo.config.SecurityRealm;
 
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
+
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import java.util.logging.Logger;
 
 @Stateless
 public class Login {
 
-    private static final Logger LOGGER = Logger.getLogger(Login.class.getSimpleName());
-
-    private static final String AUTH_TOKEN = "Auth-Token";
-
-    /*@Inject
-    private AuthenticationManager authenticationManager;*/
-
+    @Inject
+    private EntityManager em;
 
     @Inject
-    Event<ResponseHeaders> headers;
+    private SecurityRealm realm;
+
+
+    private static final Logger LOGGER = Logger.getLogger(Login.class.getSimpleName());
 
     public void index() {
         LOGGER.info("Login page!");
+
+        UsernamePasswordToken token = new UsernamePasswordToken("admin", "admin");
+
+        try {
+
+            SecurityManager securityManager = new DefaultSecurityManager(realm);
+            SecurityUtils.setSecurityManager(securityManager);
+            Subject subject = SecurityUtils.getSubject();
+            subject.login(token);
+            System.out.println("Hi there, do we have session? " + subject.getSession().getId());
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

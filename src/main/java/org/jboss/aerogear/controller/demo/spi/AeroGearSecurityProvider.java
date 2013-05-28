@@ -19,11 +19,7 @@ package org.jboss.aerogear.controller.demo.spi;
 
 import org.jboss.aerogear.controller.router.Route;
 import org.jboss.aerogear.controller.spi.SecurityProvider;
-import org.jboss.aerogear.security.exception.AeroGearSecurityException;
-import org.jboss.aerogear.security.exception.HttpStatus;
-import org.jboss.aerogear.security.idm.AeroGearCredential;
 
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 
 /**
@@ -31,20 +27,21 @@ import javax.servlet.ServletException;
  */
 public class AeroGearSecurityProvider implements SecurityProvider {
 
-    @Inject
-    private AeroGearCredential credential;
+    /*@Inject
+    private AeroGearCredential credential;*/
 
     /**
      * Route validation support on AeroGear Controller
+     *
      * @param route the {@link Route} for which this provider to determine access.
      * @throws ServletException
      */
     @Override
     public void isRouteAllowed(Route route) throws ServletException {
 
-        if (!credential.hasRoles(route.getRoles())) {
+        /*if (!credential.hasRoles(route.getRoles())) {
             throw new AeroGearSecurityException(HttpStatus.AUTHENTICATION_FAILED);
-        }
+        }*/
 
     }
 }

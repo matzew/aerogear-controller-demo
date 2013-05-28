@@ -16,19 +16,13 @@
  */
 package org.jboss.aerogear.controller.demo;
 
-import org.jboss.aerogear.security.auth.AuthenticationManager;
-import org.jboss.aerogear.security.authz.IdentityManagement;
-import org.jboss.aerogear.security.model.AeroGearUser;
-
 import javax.ejb.Stateless;
-import javax.inject.Inject;
-import java.util.List;
 
 @Stateless
 public class Admin {
 
 
-    public static final String DEFAULT_ROLE = "simple";
+   /* public static final String DEFAULT_ROLE = "simple";
 
     @Inject
     private IdentityManagement configuration;
@@ -53,5 +47,5 @@ public class Admin {
 
     public AeroGearUser show(String id){
        return configuration.get(id);
-    }
+    }*/
 }

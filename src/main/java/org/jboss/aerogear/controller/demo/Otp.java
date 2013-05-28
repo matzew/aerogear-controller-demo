@@ -17,31 +17,23 @@
 
 package org.jboss.aerogear.controller.demo;
 
-import org.jboss.aerogear.security.auth.LoggedUser;
-import org.jboss.aerogear.security.auth.Secret;
-import org.jboss.aerogear.security.model.AeroGearUser;
-import org.jboss.aerogear.security.otp.Totp;
-
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
-
 import java.util.logging.Logger;
 
 @Stateless
 public class Otp {
 
     @Inject
-    @Secret
     private Instance<String> secret;
-    
+
     @Inject
-    @LoggedUser
     private Instance<String> loggedInUserName;
 
     private static final Logger LOGGER = Logger.getLogger(Otp.class.getSimpleName());
     
-    public AeroGearUser secret() {
+   /* public AeroGearUser secret() {
         AeroGearUser user = new AeroGearUser();
         user.setUri(new Totp(secret.get()).uri(loggedInUserName.get()));
         return user;
@@ -56,5 +48,5 @@ public class Otp {
             throw new RuntimeException("Invalid OTP");
 
         return user;
-    }
+    }*/
 }

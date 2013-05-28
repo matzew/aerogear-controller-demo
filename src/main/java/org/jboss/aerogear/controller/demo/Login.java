@@ -18,13 +18,9 @@
 package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.controller.demo.rest.ResponseHeaders;
-import org.jboss.aerogear.security.auth.AuthenticationManager;
-import org.jboss.aerogear.security.auth.Token;
-import org.jboss.aerogear.security.model.AeroGearUser;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import java.util.logging.Logger;
 
@@ -35,12 +31,9 @@ public class Login {
 
     private static final String AUTH_TOKEN = "Auth-Token";
 
-    @Inject
-    private AuthenticationManager authenticationManager;
+    /*@Inject
+    private AuthenticationManager authenticationManager;*/
 
-    @Inject
-    @Token
-    private Instance<String> token;
 
     @Inject
     Event<ResponseHeaders> headers;
@@ -55,7 +48,7 @@ public class Login {
      * @param user represents a simple implementation that holds user's credentials.
      * @return HTTP response and the session ID
      */
-    public AeroGearUser login(final AeroGearUser user) {
+    /*public AeroGearUser login(final AeroGearUser user) {
         performLogin(user);
         fireResponseHeaderEvent();
         return user;
@@ -68,9 +61,5 @@ public class Login {
 
     private void performLogin(AeroGearUser aeroGearUser) {
         authenticationManager.login(aeroGearUser);
-    }
-
-    private void fireResponseHeaderEvent() {
-        headers.fire(new ResponseHeaders(AUTH_TOKEN, token.get().toString()));
-    }
+    }*/
 }

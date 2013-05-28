@@ -26,9 +26,6 @@ import org.jboss.aerogear.controller.router.RequestMethod;
 import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterException;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationRequestException;
-import org.jboss.aerogear.security.exception.AeroGearSecurityException;
-import org.jboss.aerogear.security.model.AeroGearUser;
-import org.picketlink.authentication.UnexpectedCredentialException;
 
 /**
  * Routes are the core of aerogear-controller–demo.
@@ -59,19 +56,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(MissingRequestParameterException.class)
                 .produces(JSON)
                 .to(Error.class).handleMissingRequestParameter(param(MissingRequestParameterException.class));
-        route()
-                .on(AeroGearSecurityException.class)
-                .produces(JSP, JSON)
-                .to(Error.class).security(param(RuntimeException.class));
-        /*
-         * This error route is only for demo purposes and we do not recommend a production system
-         * to provide this much information, as it could be used by an attacker. 
-         */
-        route()
-                .on(UnexpectedCredentialException.class)
-                .produces(JSP)
-                .to(Error.class).alreadyLoggedIn();
-        
+
         route()
                 .on(Exception.class)
                 .produces(JSP, JSON)
@@ -123,6 +108,11 @@ public class Routes extends AbstractRoutingModule {
                 .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
                 .to(Login.class).index();
         route()
+                .from("/register")
+                .on(RequestMethod.GET)
+                .to(Register.class).index();
+
+        /*route()
                 .from("/login")
                 .on(RequestMethod.POST)
                 .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
@@ -145,10 +135,6 @@ public class Routes extends AbstractRoutingModule {
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
                 .to(Login.class).logout();
-        route()
-                .from("/register")
-                .on(RequestMethod.GET)
-                .to(Register.class).index();
         route()
                 .from("/register")
                 .on(RequestMethod.POST)
@@ -183,5 +169,18 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.GET)
                 .produces(HTML)
                 .to(Html.class).index();
+
+        route()
+                .on(AeroGearSecurityException.class)
+                .produces(JSP, JSON)
+                .to(Error.class).security(param(RuntimeException.class));
+        *//*
+         * This error route is only for demo purposes and we do not recommend a production system
+         * to provide this much information, as it could be used by an attacker.
+         *//*
+        route()
+                .on(UnexpectedCredentialException.class)
+                .produces(JSP)
+                .to(Error.class).alreadyLoggedIn();*/
     }
 }

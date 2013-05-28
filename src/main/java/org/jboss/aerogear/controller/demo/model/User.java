@@ -1,5 +1,7 @@
 package org.jboss.aerogear.controller.demo.model;
 
+import org.apache.shiro.crypto.hash.Sha256Hash;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +28,7 @@ public class User {
     public User(Long id, String username, String password) {
         this.id = id;
         this.username = username;
-        this.password = password;
+        this.password = new Sha256Hash(password).toHex();
     }
 
     @Id
@@ -72,7 +74,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = new Sha256Hash(password).toHex();
     }
 
 

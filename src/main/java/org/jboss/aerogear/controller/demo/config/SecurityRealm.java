@@ -29,11 +29,25 @@ public class SecurityRealm extends AuthorizingRealm {
     }
 
     @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authToken) throws AuthenticationException {
+
+        UsernamePasswordToken token = (UsernamePasswordToken) authToken;
+        Query query = entityManager.createQuery("select u from User u where u.username = :username", User.class)
+                .setParameter("username", token.getUsername());
+        User user = (User) query.getSingleResult();
+
+        if (user != null) {
+            System.out.println("================= Password: " + user.getPassword() + "===========================");
+            return new SimpleAuthenticationInfo(user.getId(), user.getPassword(), getName());
+        } else {
+            return null;
+        }
+    }
+
+    @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         Long userId = (Long) principals.fromRealm(getName()).iterator().next();
-        Query query = entityManager.createQuery("select u from User u where u.username = :username", User.class)
-                .setParameter("username", userId);
-        User user = new User(1L, "admin",new Sha256Hash("admin").toHex());
+        User user = entityManager.find(User.class, userId);
         if (user != null) {
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
             for (Role role : user.getRoles()) {
@@ -46,16 +60,5 @@ public class SecurityRealm extends AuthorizingRealm {
         }
     }
 
-    @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authToken) throws AuthenticationException {
 
-        UsernamePasswordToken token = (UsernamePasswordToken) authToken;
-//        User user = token.getUsername();
-        User user = new User(1L, "admin", new Sha256Hash("admin").toHex());
-        if (user != null) {
-            return new SimpleAuthenticationInfo(user.getId(), user.getPassword(), getName());
-        } else {
-            return null;
-        }
-    }
 }

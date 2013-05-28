@@ -8,12 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@NamedQuery(name="User.findByUsername", query="select u from User u where u.username = :username")
 public class User {
 
     private Long id;
@@ -28,7 +30,7 @@ public class User {
     public User(Long id, String username, String password) {
         this.id = id;
         this.username = username;
-        this.password = new Sha256Hash(password).toHex();
+        this.password = password;
     }
 
     @Id
@@ -74,7 +76,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = new Sha256Hash(password).toHex();
+        this.password = password;
     }
 
 

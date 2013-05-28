@@ -23,7 +23,7 @@ public class SecurityRealm extends AuthorizingRealm {
     @Inject
     private EntityManager entityManager;
 
-    public SecurityRealm(){
+    public SecurityRealm() {
         setName("SecurityRealm"); //This name must match the name in the User class's getPrincipals() method
         setCredentialsMatcher(new Sha256CredentialsMatcher());
     }
@@ -32,13 +32,12 @@ public class SecurityRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authToken) throws AuthenticationException {
 
         UsernamePasswordToken token = (UsernamePasswordToken) authToken;
-        Query query = entityManager.createQuery("select u from User u where u.username = :username", User.class)
+        Query query = entityManager.createNamedQuery("User.findByUsername", User.class)
                 .setParameter("username", token.getUsername());
         User user = (User) query.getSingleResult();
 
         if (user != null) {
-            System.out.println("================= Password: " + user.getPassword() + "===========================");
-            return new SimpleAuthenticationInfo(user.getId(), user.getPassword(), getName());
+            return new SimpleAuthenticationInfo(user.getId(), new Sha256Hash(user.getPassword()), getName());
         } else {
             return null;
         }

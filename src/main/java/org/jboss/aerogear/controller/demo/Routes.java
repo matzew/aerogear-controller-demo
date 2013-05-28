@@ -20,6 +20,7 @@ import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder
 
 import org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder;
 import org.jboss.aerogear.controller.demo.model.Car;
+import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.controller.router.MediaType;
 import org.jboss.aerogear.controller.router.RequestMethod;
@@ -112,13 +113,21 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.GET)
                 .to(Register.class).index();
 
-        /*route()
+        route()
                 .from("/login")
                 .on(RequestMethod.POST)
                 .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
                 .consumes(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
-                .to(Login.class).login(param(AeroGearUser.class));
+                .to(Login.class).login(param(User.class));
+
         route()
+                .from("/logout")
+                .on(RequestMethod.GET, RequestMethod.POST)
+                .produces(JSON, JSP)
+                .consumes(JSON, JSP)
+                .to(Login.class).logout();
+
+        /*route()
                 .from("/otp")
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
@@ -129,12 +138,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.GET)
                 .produces(JSON)
                 .to(Otp.class).secret();
-        route()
-                .from("/logout")
-                .on(RequestMethod.GET, RequestMethod.POST)
-                .produces(JSON, JSP)
-                .consumes(JSON, JSP)
-                .to(Login.class).logout();
+
         route()
                 .from("/register")
                 .on(RequestMethod.POST)

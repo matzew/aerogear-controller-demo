@@ -25,7 +25,9 @@ import org.apache.shiro.realm.Realm;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.mgt.SecurityManager;
 import org.jboss.aerogear.controller.demo.config.SecurityRealm;
+import org.jboss.aerogear.controller.demo.model.User;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 
 import javax.inject.Inject;
@@ -41,44 +43,36 @@ public class Login {
     @Inject
     private SecurityRealm realm;
 
+    private Subject subject;
 
     private static final Logger LOGGER = Logger.getLogger(Login.class.getSimpleName());
 
-    public void index() {
-        LOGGER.info("Login page!");
-
-        UsernamePasswordToken token = new UsernamePasswordToken("admin", "admin");
-
-        try {
-
-            SecurityManager securityManager = new DefaultSecurityManager(realm);
-            SecurityUtils.setSecurityManager(securityManager);
-            Subject subject = SecurityUtils.getSubject();
-            subject.login(token);
-            System.out.println("Hi there, do we have session? " + subject.getSession().getId());
-        } catch (AuthenticationException e) {
-            e.printStackTrace();
-        }
+    @PostConstruct
+    public void init(){
+        SecurityManager securityManager = new DefaultSecurityManager(realm);
+        SecurityUtils.setSecurityManager(securityManager);
+        subject = SecurityUtils.getSubject();
     }
 
-    /**
-     * {@link org.jboss.aerogear.security.model.AeroGearUser} registration
-     *
-     * @param user represents a simple implementation that holds user's credentials.
-     * @return HTTP response and the session ID
-     */
-    /*public AeroGearUser login(final AeroGearUser user) {
-        performLogin(user);
-        fireResponseHeaderEvent();
+    public void index() {
+        LOGGER.info("Login page!");
+    }
+
+    public User login(final User user) {
+
+        System.out.println("Username: " + user.getUsername());
+        System.out.println("Password: " + user.getPassword());
+
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), "admin");
+        subject.login(token);
+        System.out.println("Hi there, do we have session? " + subject.getSession().getId());
         return user;
     }
 
     public void logout() {
         LOGGER.info("User logout!");
-        authenticationManager.logout();
+        subject.logout();
     }
 
-    private void performLogin(AeroGearUser aeroGearUser) {
-        authenticationManager.login(aeroGearUser);
-    }*/
+
 }

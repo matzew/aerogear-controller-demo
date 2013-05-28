@@ -5,10 +5,10 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authc.credential.Sha256CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.apache.shiro.crypto.hash.Sha512Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.jboss.aerogear.controller.demo.model.Role;
@@ -25,7 +25,7 @@ public class SecurityRealm extends AuthorizingRealm {
 
     public SecurityRealm() {
         setName("SecurityRealm"); //This name must match the name in the User class's getPrincipals() method
-        setCredentialsMatcher(new Sha256CredentialsMatcher());
+        setCredentialsMatcher(new HashedCredentialsMatcher(Sha512Hash.ALGORITHM_NAME));
     }
 
     @Override
@@ -37,7 +37,7 @@ public class SecurityRealm extends AuthorizingRealm {
         User user = (User) query.getSingleResult();
 
         if (user != null) {
-            return new SimpleAuthenticationInfo(user.getId(), new Sha256Hash(user.getPassword()), getName());
+            return new SimpleAuthenticationInfo(user.getId(), new Sha512Hash(user.getPassword()), getName());
         } else {
             return null;
         }

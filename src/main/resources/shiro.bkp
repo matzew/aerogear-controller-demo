@@ -1,6 +1,0 @@
-[main]
-saltedJdbcRealm = com.czetsuya.shiro.JdbcRealmImpl
-
-saltedJdbcRealm.jndiDataSourceName = java:jboss/datasources/ExampleDS
-
-saltedJdbcRealm.permissionsLookupEnabled = true

@@ -17,18 +17,23 @@
 
 package org.jboss.aerogear.controller.demo.spi;
 
+import org.apache.shiro.subject.Subject;
 import org.jboss.aerogear.controller.router.Route;
 import org.jboss.aerogear.controller.spi.SecurityProvider;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
+import java.util.logging.Logger;
 
 /**
  * Security SPI for AeroGear Controller
  */
 public class AeroGearSecurityProvider implements SecurityProvider {
 
-    /*@Inject
-    private AeroGearCredential credential;*/
+    private static final Logger LOGGER = Logger.getLogger(AeroGearSecurityProvider.class.getSimpleName());
+
+    @Inject
+    private Subject subject;
 
     /**
      * Route validation support on AeroGear Controller
@@ -39,9 +44,13 @@ public class AeroGearSecurityProvider implements SecurityProvider {
     @Override
     public void isRouteAllowed(Route route) throws ServletException {
 
-        /*if (!credential.hasRoles(route.getRoles())) {
-            throw new AeroGearSecurityException(HttpStatus.AUTHENTICATION_FAILED);
-        }*/
+        LOGGER.info("IS AUTHENTICATED 2: " + subject.getSession().getTimeout());
+        LOGGER.info("IS AUTHENTICATED 2: " + subject.isRemembered());
+        LOGGER.info("SPI IN ACTION: " + subject.getSession().getId());
+
+        if (!subject.hasAllRoles(route.getRoles())) {
+            throw new RuntimeException("Unauthorized");
+        }
 
     }
 }

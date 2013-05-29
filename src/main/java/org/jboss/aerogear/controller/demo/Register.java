@@ -17,27 +17,25 @@
 
 package org.jboss.aerogear.controller.demo;
 
+import org.jboss.aerogear.controller.demo.model.User;
+import org.jboss.aerogear.controller.demo.service.AuthenticatorService;
+
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 @Stateless
 public class Register {
 
-    public static final String DEFAULT_ROLE = "simple";
-
-    /*@Inject
-    private IdentityManagement configuration;
-
     @Inject
-    private AuthenticationManager authenticationManager; */
+    private AuthenticatorService authenticatorService;
 
     public void index() {
         System.out.println("Login page!");
     }
 
-    /*public AeroGearUser register(AeroGearUser user) {
-        configuration.create(user);
-        configuration.grant(DEFAULT_ROLE).to(user);
-        authenticationManager.login(user);
+    public User register(String username, String password) {
+        User user = authenticatorService.register(username, password);
+        authenticatorService.login(user);
         return user;
-    }*/
+    }
 }

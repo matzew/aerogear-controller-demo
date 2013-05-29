@@ -127,7 +127,33 @@ public class Routes extends AbstractRoutingModule {
                 .consumes(JSON, JSP)
                 .to(Login.class).logout();
 
+        route()
+                .from("/register")
+                .on(RequestMethod.POST)
+                .produces(JSON, JSP)
+                .consumes(JSON, JSP)
+                .to(Register.class).register(param("username"), param("password"));
+
+        route()
+                .from("/admin").roles("admin")
+                .on(RequestMethod.GET)
+                .to(Admin.class).index();
+        route()
+                .from("/admin").roles("admin")
+                .on(RequestMethod.POST)
+                .produces(JSON, JSP)
+                .consumes(JSON, JSP)
+                .to(Admin.class).register(param("username"), param("password"));
         /*route()
+                .from("/show/{id}").roles("admin")
+                .on(RequestMethod.GET)
+                .to(Admin.class).show(param("id"));
+        route()
+                .from("/show/remove").roles("admin")
+                .on(RequestMethod.POST)
+                .to(Admin.class).remove(param(AeroGearUser.class));
+
+         route()
                 .from("/otp")
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
@@ -139,35 +165,13 @@ public class Routes extends AbstractRoutingModule {
                 .produces(JSON)
                 .to(Otp.class).secret();
 
-        route()
-                .from("/register")
-                .on(RequestMethod.POST)
-                .produces(JSON, JSP)
-                .consumes(JSON, JSP)
-                .to(Register.class).register(param(AeroGearUser.class));
+
         route()
                 .from("/throwException")
                 .on(RequestMethod.GET)
                 .produces(JSP, JSON)
                 .to(Error.class).throwException();
-        route()
-                .from("/admin").roles("admin")
-                .on(RequestMethod.GET)
-                .to(Admin.class).index();
-        route()
-                .from("/admin").roles("admin")
-                .on(RequestMethod.POST)
-                .produces(JSON, JSP)
-                .consumes(JSON, JSP)
-                .to(Admin.class).register(param(AeroGearUser.class));
-        route()
-                .from("/show/{id}").roles("admin")
-                .on(RequestMethod.GET)
-                .to(Admin.class).show(param("id"));
-        route()
-                .from("/show/remove").roles("admin")
-                .on(RequestMethod.POST)
-                .to(Admin.class).remove(param(AeroGearUser.class));
+
         route()
                 .from("/html")
                 .on(RequestMethod.GET)
@@ -178,7 +182,8 @@ public class Routes extends AbstractRoutingModule {
                 .on(AeroGearSecurityException.class)
                 .produces(JSP, JSON)
                 .to(Error.class).security(param(RuntimeException.class));
-        *//*
+
+        /*
          * This error route is only for demo purposes and we do not recommend a production system
          * to provide this much information, as it could be used by an attacker.
          *//*

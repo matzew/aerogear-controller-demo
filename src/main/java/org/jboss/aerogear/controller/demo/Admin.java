@@ -16,31 +16,32 @@
  */
 package org.jboss.aerogear.controller.demo;
 
+import org.jboss.aerogear.controller.demo.model.User;
+import org.jboss.aerogear.controller.demo.service.AuthenticatorService;
+
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class Admin {
 
-
-   /* public static final String DEFAULT_ROLE = "simple";
-
     @Inject
-    private IdentityManagement configuration;
-
-    @Inject
-    private AuthenticationManager authenticationManager;
+    private AuthenticatorService authenticatorService;
 
     public List index() {
-        return configuration.findAllByRole("simple");
+//        return configuration.findAllByRole("simple");
+        return new ArrayList();
     }
 
-    public List register(AeroGearUser user){
-        configuration.create(user);
-        configuration.grant(DEFAULT_ROLE).to(user);
-        return configuration.findAllByRole("simple");
+    public List register(String username, String password) {
+        User user = authenticatorService.register(username, password);
+        authenticatorService.login(user);
+        return new ArrayList();
     }
 
-    public List remove(AeroGearUser aeroGearUser) {
+    /*public List remove(AeroGearUser aeroGearUser) {
         configuration.remove(aeroGearUser);
         return configuration.findAllByRole("simple");
     }

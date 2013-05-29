@@ -1,7 +1,5 @@
 package org.jboss.aerogear.controller.demo.model;
 
-import org.apache.shiro.crypto.hash.Sha256Hash;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@NamedQuery(name="User.findByUsername", query="select u from User u where u.username = :username")
+@NamedQuery(name = "User.findByUsername", query = "select u from User u where u.username = :username")
 public class User {
 
     private Long id;
@@ -27,8 +25,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String username, String password) {
-        this.id = id;
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }

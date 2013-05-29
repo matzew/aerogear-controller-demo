@@ -17,61 +17,31 @@
 
 package org.jboss.aerogear.controller.demo;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.mgt.DefaultSecurityManager;
-import org.apache.shiro.realm.Realm;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.mgt.SecurityManager;
-import org.jboss.aerogear.controller.demo.config.SecurityRealm;
 import org.jboss.aerogear.controller.demo.model.User;
+import org.jboss.aerogear.controller.demo.service.AuthenticatorService;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
-
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import java.util.logging.Logger;
 
 @Stateless
 public class Login {
 
     @Inject
-    private EntityManager em;
-
-    @Inject
-    private SecurityRealm realm;
-
-    private Subject subject;
+    private AuthenticatorService authenticatorService;
 
     private static final Logger LOGGER = Logger.getLogger(Login.class.getSimpleName());
-
-    @PostConstruct
-    public void init(){
-        SecurityManager securityManager = new DefaultSecurityManager(realm);
-        SecurityUtils.setSecurityManager(securityManager);
-        subject = SecurityUtils.getSubject();
-    }
 
     public void index() {
         LOGGER.info("Login page!");
     }
 
-    public User login(final User user) {
-
-        System.out.println("Username: " + user.getUsername());
-        System.out.println("Password: " + user.getPassword());
-
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), "admin");
-        subject.login(token);
-        System.out.println("Hi there, do we have session? " + subject.getSession().getId());
-        return user;
+    public void login(final User user) {
+        authenticatorService.login(user);
     }
 
     public void logout() {
-        LOGGER.info("User logout!");
-        subject.logout();
+        authenticatorService.logout();
     }
 
 

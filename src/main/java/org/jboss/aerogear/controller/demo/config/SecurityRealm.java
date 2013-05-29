@@ -24,7 +24,7 @@ public class SecurityRealm extends AuthorizingRealm {
     private EntityManager entityManager;
 
     public SecurityRealm() {
-        setName("SecurityRealm"); //This name must match the name in the User class's getPrincipals() method
+        setName("SecurityRealm");
         setCredentialsMatcher(new HashedCredentialsMatcher(Sha512Hash.ALGORITHM_NAME));
     }
 

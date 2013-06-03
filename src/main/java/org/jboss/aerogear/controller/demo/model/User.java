@@ -2,6 +2,7 @@ package org.jboss.aerogear.controller.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -77,7 +78,7 @@ public class User {
     }
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles")
     public Set<Role> getRoles() {
         return roles;

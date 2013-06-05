@@ -51,6 +51,10 @@
             <param-name>realm</param-name>
             <param-value>default</param-value>
         </init-param>
+        <init-param>
+            <param-name>unprotectedMethods</param-name>
+            <param-value>OPTIONS</param-value>
+        </init-param>
     </filter>
 
     <!-- HSTS filter -->

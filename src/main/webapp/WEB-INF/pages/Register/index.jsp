@@ -29,9 +29,9 @@
         <form action="register" method="post">
 
             <label>Username:</label>
-            <input autocomplete="off" type="text" name="username"/>
+            <input autocomplete="off" type="text" name="user.username"/>
             <label>Password:</label>
-            <input autocomplete="off" type="password" name="password"/>
+            <input autocomplete="off" type="password" name="user.password"/>
             <input type="submit"/>
 
         </form>

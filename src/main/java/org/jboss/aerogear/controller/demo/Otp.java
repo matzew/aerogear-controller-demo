@@ -33,13 +33,13 @@ public class Otp {
 
     private static final Logger LOGGER = Logger.getLogger(Otp.class.getSimpleName());
     
-   /* public AeroGearUser secret() {
-        AeroGearUser user = new AeroGearUser();
+   /* public User secret() {
+        User user = new User();
         user.setUri(new Totp(secret.get()).uri(loggedInUserName.get()));
         return user;
     }
 
-    public AeroGearUser otp(AeroGearUser user) {
+    public User otp(User user) {
 
         Totp totp = new Totp(secret.get());
         boolean result = totp.verify(user.getOtp());

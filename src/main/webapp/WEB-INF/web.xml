@@ -23,5 +23,4 @@
             <http-only>true</http-only>
         </cookie-config>
     </session-config>
-
 </web-app>

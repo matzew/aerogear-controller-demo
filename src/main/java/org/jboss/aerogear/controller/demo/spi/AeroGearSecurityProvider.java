@@ -18,9 +18,9 @@
 package org.jboss.aerogear.controller.demo.spi;
 
 import org.apache.shiro.subject.Subject;
-import org.jboss.aerogear.controller.demo.annotations.SessionId;
 import org.jboss.aerogear.controller.router.Route;
 import org.jboss.aerogear.controller.spi.SecurityProvider;
+import org.jboss.aerogear.security.auth.SessionId;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;

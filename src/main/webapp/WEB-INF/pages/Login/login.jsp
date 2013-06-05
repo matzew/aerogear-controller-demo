@@ -25,7 +25,7 @@
     <div class="sixteen columns">
         <p>maybe you should try the <a href="delorean">delorean page</a></p>
         <p>you can also try the <a href="admin">restricted admin page</a></p>
-        hello ${aeroGearUser.username} to the authentication page!
+        hello ${user.username} to the authentication page!
         <p> <a href="logout">Logout</a></p>
     </div>
     <div class="sixteen columns">
@@ -36,7 +36,7 @@
         <div id="qrcode-div"></div>
         <form action="otp" method="post">
             <label>OTP:</label>
-            <input autocomplete="off" type="password" name="aeroGearUser.otp"/>
+            <input autocomplete="off" type="password" name="user.otp"/>
             <input type="submit"/>
 
         </form>

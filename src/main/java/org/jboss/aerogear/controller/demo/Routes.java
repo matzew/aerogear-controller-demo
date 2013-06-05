@@ -16,17 +16,17 @@
  */
 package org.jboss.aerogear.controller.demo;
 
-import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
-
 import org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder;
 import org.jboss.aerogear.controller.demo.model.Car;
-import org.jboss.aerogear.controller.demo.model.User;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
 import org.jboss.aerogear.controller.router.MediaType;
 import org.jboss.aerogear.controller.router.RequestMethod;
 import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterException;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationRequestException;
+import org.jboss.aerogear.security.shiro.model.User;
+
+import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
 
 /**
  * Routes are the core of aerogear-controller–demo.
@@ -109,11 +109,6 @@ public class Routes extends AbstractRoutingModule {
                 .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
                 .to(Login.class).index();
         route()
-                .from("/register")
-                .on(RequestMethod.GET)
-                .to(Register.class).index();
-
-        route()
                 .from("/login")
                 .on(RequestMethod.POST)
                 .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
@@ -129,21 +124,26 @@ public class Routes extends AbstractRoutingModule {
 
         route()
                 .from("/register")
+                .on(RequestMethod.GET)
+                .to(Register.class).index();
+
+        route()
+                .from("/register")
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
-                .to(Register.class).register(param("username"), param("password"));
+                .to(Register.class).register(param(User.class));
 
         route()
                 .from("/admin").roles("admin")
                 .on(RequestMethod.GET)
                 .to(Admin.class).index();
-        route()
-                .from("/admin").roles("admin")
-                .on(RequestMethod.POST)
-                .produces(JSON, JSP)
-                .consumes(JSON, JSP)
-                .to(Admin.class).register(param("username"), param("password"));
+//        route()
+//                .from("/admin").roles("admin")
+//                .on(RequestMethod.POST)
+//                .produces(JSON, JSP)
+//                .consumes(JSON, JSP)
+//                .to(Admin.class).register(param("username"), param("password"));
         /*route()
                 .from("/show/{id}").roles("admin")
                 .on(RequestMethod.GET)
@@ -151,14 +151,14 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/show/remove").roles("admin")
                 .on(RequestMethod.POST)
-                .to(Admin.class).remove(param(AeroGearUser.class));
+                .to(Admin.class).remove(param(User.class));
 
          route()
                 .from("/otp")
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
-                .to(Otp.class).otp(param(AeroGearUser.class));
+                .to(Otp.class).otp(param(User.class));
         route()
                 .from("/auth/otp/secret")
                 .on(RequestMethod.GET)

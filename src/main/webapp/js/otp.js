@@ -24,8 +24,8 @@ $( document ).ready( function() {
 	        data:{},
 	        type:'GET', 
 	        success:function (data) {
-                console.log(data.uri);
-                $('#qrcode-div').empty().qrcode(data.uri);
+                console.log(data);
+                $('#qrcode-div').empty().qrcode(data);
             }
 	    });
 	});

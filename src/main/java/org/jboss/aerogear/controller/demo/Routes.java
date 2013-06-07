@@ -151,20 +151,20 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/show/remove").roles("admin")
                 .on(RequestMethod.POST)
-                .to(Admin.class).remove(param(User.class));
+                .to(Admin.class).remove(param(User.class)); */
 
          route()
                 .from("/otp")
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
-                .to(Otp.class).otp(param(User.class));
+                .to(Otp.class).otp(param("otp"));
         route()
                 .from("/auth/otp/secret")
                 .on(RequestMethod.GET)
                 .produces(JSON)
                 .to(Otp.class).secret();
-
+        /*
 
         route()
                 .from("/throwException")

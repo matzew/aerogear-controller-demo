@@ -32,7 +32,7 @@
         <label>Username:</label>
         <input type="text" name="aeroGearUser.username"/>
         <label>Password:</label>
-        <input type="password" name="aeroGearUser.password"/>
+        <input type="ahoy" name="aeroGearUser.ahoy"/>
         <input type="submit"/>
     </form>
     </div>

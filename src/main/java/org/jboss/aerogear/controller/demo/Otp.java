@@ -17,6 +17,10 @@
 
 package org.jboss.aerogear.controller.demo;
 
+import org.jboss.aerogear.security.auth.LoggedUser;
+import org.jboss.aerogear.security.auth.Secret;
+import org.jboss.aerogear.security.otp.Totp;
+
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
@@ -26,27 +30,29 @@ import java.util.logging.Logger;
 public class Otp {
 
     @Inject
+    @Secret
     private Instance<String> secret;
 
     @Inject
+    @LoggedUser
     private Instance<String> loggedInUserName;
 
     private static final Logger LOGGER = Logger.getLogger(Otp.class.getSimpleName());
-    
-   /* public User secret() {
-        User user = new User();
-        user.setUri(new Totp(secret.get()).uri(loggedInUserName.get()));
-        return user;
+
+    public String secret() {
+        return new Totp(secret.get()).uri(loggedInUserName.get());
     }
 
-    public User otp(User user) {
+    public String otp(String otp) {
+
+        System.out.println("my ahoy my ahoy:  " + otp);
 
         Totp totp = new Totp(secret.get());
-        boolean result = totp.verify(user.getOtp());
+        boolean result = totp.verify(otp);
 
         if (!result)
             throw new RuntimeException("Invalid OTP");
 
-        return user;
-    }*/
+        return loggedInUserName.get();
+    }
 }

@@ -48,7 +48,7 @@
             <param-value>DIGEST</param-value>
         </init-param>
         <init-param>
-            <param-name>realm</param-name>
+            <param-name>realmName</param-name>
             <param-value>default</param-value>
         </init-param>
         <init-param>

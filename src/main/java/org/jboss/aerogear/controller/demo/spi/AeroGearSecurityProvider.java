@@ -17,16 +17,13 @@
 
 package org.jboss.aerogear.controller.demo.spi;
 
-import org.apache.shiro.subject.Subject;
 import org.jboss.aerogear.controller.router.Route;
 import org.jboss.aerogear.controller.spi.SecurityProvider;
-import org.jboss.aerogear.security.auth.SessionId;
+import org.jboss.aerogear.security.authz.IdentityManagement;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
-import java.io.Serializable;
 import java.util.logging.Logger;
 
 /**
@@ -39,8 +36,7 @@ public class AeroGearSecurityProvider implements SecurityProvider {
     private static final Logger LOGGER = Logger.getLogger(AeroGearSecurityProvider.class.getSimpleName());
 
     @Inject
-    @SessionId
-    private Instance<Serializable> session;
+    private IdentityManagement identityManagement;
 
     /**
      * Route validation support on AeroGear Controller
@@ -51,10 +47,7 @@ public class AeroGearSecurityProvider implements SecurityProvider {
     @Override
     public void isRouteAllowed(Route route) throws ServletException {
 
-        Serializable sessionId = session.get();
-        Subject subject = new Subject.Builder().sessionId(sessionId).buildSubject();
-
-        if (!subject.hasAllRoles(route.getRoles())) {
+        if (!identityManagement.hasRoles(route.getRoles())) {
             throw new RuntimeException("Unauthorized");
         }
 

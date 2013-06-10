@@ -24,7 +24,7 @@ import org.jboss.aerogear.controller.router.RequestMethod;
 import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterException;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationRequestException;
-import org.jboss.aerogear.security.shiro.model.User;
+import org.jboss.aerogear.security.picketlink.model.User;
 
 import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
 

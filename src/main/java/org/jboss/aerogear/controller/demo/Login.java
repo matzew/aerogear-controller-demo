@@ -18,7 +18,7 @@
 package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.security.auth.AuthenticationManager;
-import org.jboss.aerogear.security.shiro.model.User;
+import org.jboss.aerogear.security.picketlink.model.User;
 
 import javax.inject.Inject;
 import java.util.logging.Logger;

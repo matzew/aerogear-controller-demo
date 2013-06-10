@@ -101,8 +101,8 @@
 
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
-            <artifactId>aerogear-security-shiro</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <artifactId>aerogear-security-picketlink</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 

@@ -16,6 +16,8 @@
  */
 package org.jboss.aerogear.controller.demo.util;
 
+import org.picketlink.annotations.PicketLink;
+
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
@@ -36,17 +38,15 @@ import java.util.logging.Logger;
  */
 public class Resources {
 
-//    @SuppressWarnings("unused")
-//    @PersistenceContext(unitName = "cars")
-//    private EntityManager entityManager;
-
     @SuppressWarnings("unused")
     @Produces
-    @PersistenceContext(unitName = "shiro-default")
-    private EntityManager shiroEntityManager;
+    @PicketLink
+    @PersistenceContext(unitName = "picketlink-default")
+    private EntityManager picketLinkEntityManager;
 
     @Produces
     public Logger produceLog(InjectionPoint injectionPoint) {
         return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
+
 }

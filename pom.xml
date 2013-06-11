@@ -50,6 +50,7 @@
         <aerogear.controller.version>1.0.0</aerogear.controller.version>
         <aerogear.otp.version>1.0.0</aerogear.otp.version>
         <aerogear.security.version>1.0.1-SNAPSHOT</aerogear.security.version>
+        <aerogear.security.shiro>0.1.0-SNAPSHOT</aerogear.security.shiro>
 
     </properties>
 
@@ -106,8 +107,8 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
-            <artifactId>aerogear-security-picketlink</artifactId>
-            <version>${aerogear.security.version}</version>
+            <artifactId>aerogear-security-shiro</artifactId>
+            <version>${aerogear.security.shiro}</version>
             <scope>compile</scope>
         </dependency>
 

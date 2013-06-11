@@ -18,8 +18,7 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.security.auth.AuthenticationManager;
 import org.jboss.aerogear.security.authz.IdentityManagement;
-import org.picketlink.idm.model.SimpleUser;
-import org.picketlink.idm.model.User;
+import org.jboss.aerogear.security.shiro.model.User;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -41,9 +40,9 @@ public class Admin {
         return configuration.findAllByRole("simple");
     }
 
-    public List<User> register(SimpleUser user, String password){
+    public List<User> register(User user, String password){
         configuration.create(user, password);
-        configuration.grant(DEFAULT_ROLE).to(user.getLoginName());
+        configuration.grant(DEFAULT_ROLE).to(user.getUsername());
         return configuration.findAllByRole("simple");
     }
 

@@ -18,8 +18,7 @@
 package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.security.auth.AuthenticationManager;
-import org.picketlink.idm.model.SimpleUser;
-import org.picketlink.idm.model.User;
+import org.jboss.aerogear.security.shiro.model.User;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -45,7 +44,7 @@ public class Login {
      * @param password
      * @return HTTP response and the session ID
      */
-    public User login(final SimpleUser user, String password) {
+    public User login(final User user, String password) {
         authenticationManager.login(user, password);
         return user;
     }

@@ -35,20 +35,14 @@
             <property name="hibernate.hbm2ddl.import_files" value="car-import.sql"/>
         </properties>
     </persistence-unit>
-    <persistence-unit name="picketlink-default"
+    <persistence-unit name="shiro-default"
                       transaction-type="JTA">
         <description>PicketLink Persistence Unit</description>
 
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
 
-        <class>org.picketlink.idm.jpa.schema.CredentialObject</class>
-        <class>org.picketlink.idm.jpa.schema.CredentialObjectAttribute</class>
-        <class>org.picketlink.idm.jpa.schema.IdentityObject</class>
-        <class>org.picketlink.idm.jpa.schema.IdentityObjectAttribute</class>
-        <class>org.picketlink.idm.jpa.schema.PartitionObject</class>
-        <class>org.picketlink.idm.jpa.schema.RelationshipIdentityObject</class>
-        <class>org.picketlink.idm.jpa.schema.RelationshipObject</class>
-        <class>org.picketlink.idm.jpa.schema.RelationshipObjectAttribute</class>
+        <class>org.jboss.aerogear.security.shiro.model.User</class>
+        <class>org.jboss.aerogear.security.shiro.model.Role</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
@@ -58,6 +52,7 @@
             <property name="hibernate.format_sql" value="false"/>
             <property name="hibernate.transaction.flush_before_completion"
                       value="true"/>
+            <property name="hibernate.hbm2ddl.import_files" value="users-import.sql"/>
         </properties>
     </persistence-unit>
 </persistence>

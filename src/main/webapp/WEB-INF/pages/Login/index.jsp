@@ -29,7 +29,7 @@
         <form action="login" method="post">
 
             <label>Username:</label>
-            <input autocomplete="off" type="text" name="simpleUser.loginName"/>
+            <input autocomplete="off" type="text" name="user.username"/>
             <label>Password:</label>
             <input autocomplete="off" type="password" name="password"/>
             <input type="submit"/>

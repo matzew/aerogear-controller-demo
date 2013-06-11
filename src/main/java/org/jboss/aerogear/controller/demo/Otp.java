@@ -20,8 +20,7 @@ package org.jboss.aerogear.controller.demo;
 import org.jboss.aerogear.security.auth.LoggedUser;
 import org.jboss.aerogear.security.auth.Secret;
 import org.jboss.aerogear.security.otp.Totp;
-import org.picketlink.idm.model.SimpleUser;
-import org.picketlink.idm.model.User;
+import org.jboss.aerogear.security.shiro.model.User;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Instance;
@@ -45,7 +44,7 @@ public class Otp {
         return new Totp(secret.get()).uri(loggedInUserName.get());
     }
 
-    public User otp(SimpleUser user, String otp) {
+    public User otp(User user, String otp) {
 
         Totp totp = new Totp(secret.get());
         boolean result = totp.verify(otp);

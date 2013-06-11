@@ -16,8 +16,6 @@
  */
 package org.jboss.aerogear.controller.demo;
 
-import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
-
 import org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder;
 import org.jboss.aerogear.controller.demo.model.Car;
 import org.jboss.aerogear.controller.router.AbstractRoutingModule;
@@ -27,8 +25,10 @@ import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterExc
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationRequestException;
 import org.jboss.aerogear.security.exception.AeroGearSecurityException;
-import org.jboss.aerogear.security.model.AeroGearUser;
+import org.jboss.aerogear.security.picketlink.model.User;
 import org.picketlink.authentication.UnexpectedCredentialException;
+
+import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
 
 /**
  * Routes are the core of aerogear-controller–demo.
@@ -71,7 +71,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(UnexpectedCredentialException.class)
                 .produces(JSP)
                 .to(Error.class).alreadyLoggedIn();
-        
+
         route()
                 .on(Exception.class)
                 .produces(JSP, JSON)
@@ -127,13 +127,13 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
                 .consumes(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
-                .to(Login.class).login(param(AeroGearUser.class));
+                .to(Login.class).login(param(User.class));
         route()
                 .from("/otp")
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
-                .to(Otp.class).otp(param(AeroGearUser.class));
+                .to(Otp.class).otp(param(User.class), param("otp"));
         route()
                 .from("/auth/otp/secret")
                 .on(RequestMethod.GET)
@@ -154,7 +154,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
-                .to(Register.class).register(param(AeroGearUser.class));
+                .to(Register.class).register(param(User.class));
         route()
                 .from("/throwException")
                 .on(RequestMethod.GET)
@@ -169,7 +169,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
-                .to(Admin.class).register(param(AeroGearUser.class));
+                .to(Admin.class).register(param(User.class));
         route()
                 .from("/show/{id}").roles("admin")
                 .on(RequestMethod.GET)
@@ -177,7 +177,7 @@ public class Routes extends AbstractRoutingModule {
         route()
                 .from("/show/remove").roles("admin")
                 .on(RequestMethod.POST)
-                .to(Admin.class).remove(param(AeroGearUser.class));
+                .to(Admin.class).remove(param("username"));
         route()
                 .from("/html")
                 .on(RequestMethod.GET)

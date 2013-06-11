@@ -16,8 +16,9 @@
  */
 package org.jboss.aerogear.controller.demo;
 
-import java.util.Arrays;
-import java.util.List;
+import org.jboss.aerogear.controller.demo.model.Car;
+import org.jboss.aerogear.controller.router.rest.pagination.Paginated;
+import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
 
 import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
@@ -26,10 +27,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.http.HttpServletResponse;
-
-import org.jboss.aerogear.controller.demo.model.Car;
-import org.jboss.aerogear.controller.router.rest.pagination.Paginated;
-import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
+import java.util.Arrays;
+import java.util.List;
 
 public class Cars {
 

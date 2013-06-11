@@ -18,7 +18,7 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.security.auth.AuthenticationManager;
 import org.jboss.aerogear.security.authz.IdentityManagement;
-import org.jboss.aerogear.security.model.AeroGearUser;
+import org.jboss.aerogear.security.picketlink.model.User;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -40,18 +40,18 @@ public class Admin {
         return configuration.findAllByRole("simple");
     }
 
-    public List register(AeroGearUser user){
+    public List register(User user){
         configuration.create(user);
         configuration.grant(DEFAULT_ROLE).to(user);
         return configuration.findAllByRole("simple");
     }
 
-    public List remove(AeroGearUser aeroGearUser) {
-        configuration.remove(aeroGearUser);
+    public List remove(String username) {
+        configuration.remove(username);
         return configuration.findAllByRole("simple");
     }
 
-    public AeroGearUser show(String id){
-       return configuration.get(id);
+    public User show(String username){
+       return (User) configuration.findByUsername(username);
     }
 }

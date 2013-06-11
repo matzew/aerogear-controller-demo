@@ -17,10 +17,10 @@
 
 package org.jboss.aerogear.controller.demo.config;
 
-import javax.enterprise.inject.Produces;
-
 import org.jboss.aerogear.controller.router.decorators.cors.CorsConfig;
 import org.jboss.aerogear.controller.router.decorators.cors.CorsConfiguration;
+
+import javax.enterprise.inject.Produces;
 
 /**
  * CorsConfigProducer is the CDI way of configuring CORS in AeroGear Controller.

@@ -41,14 +41,14 @@
 
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
 
-        <class>org.jboss.aerogear.security.picketlink.model.IdentityObject</class>
-        <class>org.jboss.aerogear.security.picketlink.model.PartitionObject</class>
-        <class>org.jboss.aerogear.security.picketlink.model.RelationshipObject</class>
-        <class>org.jboss.aerogear.security.picketlink.model.RelationshipIdentityObject</class>
-        <class>org.jboss.aerogear.security.picketlink.model.RelationshipObjectAttribute</class>
-        <class>org.jboss.aerogear.security.picketlink.model.IdentityObjectAttribute</class>
+        <class>org.jboss.aerogear.security.picketlink.model.User</class>
         <class>org.jboss.aerogear.security.picketlink.model.CredentialObject</class>
         <class>org.jboss.aerogear.security.picketlink.model.CredentialObjectAttribute</class>
+        <class>org.jboss.aerogear.security.picketlink.model.IdentityObjectAttribute</class>
+        <class>org.jboss.aerogear.security.picketlink.model.PartitionObject</class>
+        <class>org.jboss.aerogear.security.picketlink.model.RelationshipIdentityObject</class>
+        <class>org.jboss.aerogear.security.picketlink.model.RelationshipObject</class>
+        <class>org.jboss.aerogear.security.picketlink.model.RelationshipObjectAttribute</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>

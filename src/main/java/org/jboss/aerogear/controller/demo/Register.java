@@ -19,7 +19,7 @@ package org.jboss.aerogear.controller.demo;
 
 import org.jboss.aerogear.security.auth.AuthenticationManager;
 import org.jboss.aerogear.security.authz.IdentityManagement;
-import org.jboss.aerogear.security.model.AeroGearUser;
+import org.jboss.aerogear.security.picketlink.model.User;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -39,7 +39,7 @@ public class Register {
         System.out.println("Login page!");
     }
 
-    public AeroGearUser register(AeroGearUser user) {
+    public User register(User user) {
         configuration.create(user);
         configuration.grant(DEFAULT_ROLE).to(user);
         authenticationManager.login(user);

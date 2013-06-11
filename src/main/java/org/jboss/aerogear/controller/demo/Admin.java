@@ -16,19 +16,20 @@
  */
 package org.jboss.aerogear.controller.demo;
 
+import org.jboss.aerogear.security.authz.IdentityManagement;
+
 import javax.ejb.Stateless;
-import java.util.ArrayList;
+import javax.inject.Inject;
 import java.util.List;
 
 @Stateless
 public class Admin {
 
-//    @Inject
-//    private AuthenticatorService authenticatorService;
+    @Inject
+    private IdentityManagement identityManagement;
 
     public List index() {
-//        return configuration.findAllByRole("simple");
-        return new ArrayList();
+        return identityManagement.findAllByRole("simple");
     }
 
 //    public List register(String username, String password) {

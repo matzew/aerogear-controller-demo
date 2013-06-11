@@ -16,25 +16,31 @@
  */
 package org.jboss.aerogear.controller.demo;
 
+import org.jboss.aerogear.security.auth.AuthenticationManager;
+import org.jboss.aerogear.security.authz.IdentityManagement;
+import org.jboss.aerogear.security.picketlink.model.User;
+
 import javax.ejb.Stateless;
-import java.util.ArrayList;
+import javax.inject.Inject;
 import java.util.List;
 
 @Stateless
 public class Admin {
 
-//    @Inject
-//    private AuthenticatorService authenticatorService;
+    @Inject
+    private IdentityManagement identityManagement;
+
+    @Inject
+    private AuthenticationManager authenticationManager;
 
     public List index() {
-//        return configuration.findAllByRole("simple");
-        return new ArrayList();
+        return identityManagement.findAllByRole("simple");
     }
 
-//    public List register(String username, String password) {
-//        User user = authenticatorService.register(username, password);
-//        authenticatorService.login(user);
-//        return new ArrayList();
+//    public List register(User user) {
+//        identityManagement.create(user);
+//        authenticationManager.login(user);
+//
 //    }
 
     /*public List remove(User aeroGearUser) {

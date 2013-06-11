@@ -32,7 +32,7 @@
         <p>This is the list of registered users :</p>
         <ul>
             <c:forEach var="user" items="${arrayList}">
-                <li><a href="../show/${username}">${username}</a></li>
+                <li><a href="../show/${user.loginName}">${user.loginName}</a></li>
             </c:forEach>
         </ul>
     </div>

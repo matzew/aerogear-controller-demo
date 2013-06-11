@@ -25,8 +25,9 @@ import org.jboss.aerogear.controller.router.parameter.MissingRequestParameterExc
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationInfo;
 import org.jboss.aerogear.controller.router.rest.pagination.PaginationRequestException;
 import org.jboss.aerogear.security.exception.AeroGearSecurityException;
-import org.jboss.aerogear.security.picketlink.model.User;
 import org.picketlink.authentication.UnexpectedCredentialException;
+import org.picketlink.idm.model.SimpleUser;
+import org.picketlink.idm.model.User;
 
 import static org.jboss.aerogear.controller.demo.config.CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE;
 
@@ -127,13 +128,13 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .produces(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
                 .consumes(JSP, CustomMediaTypeResponder.CUSTOM_MEDIA_TYPE)
-                .to(Login.class).login(param(User.class));
+                .to(Login.class).login(param(SimpleUser.class), param("password"));
         route()
                 .from("/otp")
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
-                .to(Otp.class).otp(param(User.class), param("otp"));
+                .to(Otp.class).otp(param(SimpleUser.class), param("otp"));
         route()
                 .from("/auth/otp/secret")
                 .on(RequestMethod.GET)
@@ -154,7 +155,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
-                .to(Register.class).register(param(User.class));
+                .to(Register.class).register(param(SimpleUser.class), param("password"));
         route()
                 .from("/throwException")
                 .on(RequestMethod.GET)
@@ -169,7 +170,7 @@ public class Routes extends AbstractRoutingModule {
                 .on(RequestMethod.POST)
                 .produces(JSON, JSP)
                 .consumes(JSON, JSP)
-                .to(Admin.class).register(param(User.class));
+                .to(Admin.class).register(param(SimpleUser.class), param("password"));
         route()
                 .from("/show/{id}").roles("admin")
                 .on(RequestMethod.GET)

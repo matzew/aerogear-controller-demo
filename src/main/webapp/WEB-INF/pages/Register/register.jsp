@@ -25,7 +25,7 @@
     <div class="sixteen columns">
         <p>maybe you should try the <a href="delorean">delorean page</a></p>
         <p>you can also try the <a href="admin">restricted admin page</a></p>
-        hello ${user.username} to the authentication page!
+        hello ${simpleUser.loginName} to the authentication page!
         <p> <a href="logout">Logout</a></p>
     </div>
     <div class="sixteen columns">

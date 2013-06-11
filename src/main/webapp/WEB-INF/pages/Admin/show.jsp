@@ -26,8 +26,8 @@
     <div class="sixteen columns">
         <p> <a href="${pageContext.request.contextPath}/logout">Logout</a></p>
         <form action="remove" method="post">
-            <p>${user.username}</p>
-            <input type="hidden" id="user.username" name="user.username" value="${user.username}">
+            <p>${simpleUser.loginName}</p>
+            <input type="hidden" id="username" name="username" value="${simpleUser.loginName}">
             <input type="submit" value="Delete"/> or go <a href="../admin">back</a>.
         </form>
 

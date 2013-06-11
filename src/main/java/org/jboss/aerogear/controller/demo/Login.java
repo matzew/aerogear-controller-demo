@@ -17,12 +17,11 @@
 
 package org.jboss.aerogear.controller.demo;
 
-import org.jboss.aerogear.controller.demo.rest.ResponseHeaders;
 import org.jboss.aerogear.security.auth.AuthenticationManager;
-import org.jboss.aerogear.security.picketlink.model.User;
+import org.picketlink.idm.model.SimpleUser;
+import org.picketlink.idm.model.User;
 
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import java.util.logging.Logger;
 
@@ -31,13 +30,8 @@ public class Login {
 
     private static final Logger LOGGER = Logger.getLogger(Login.class.getSimpleName());
 
-    private static final String AUTH_TOKEN = "Auth-Token";
-
     @Inject
     private AuthenticationManager authenticationManager;
-
-    @Inject
-    Event<ResponseHeaders> headers;
 
     public void index() {
         LOGGER.info("Login page!");
@@ -46,20 +40,18 @@ public class Login {
     /**
      * {@link org.jboss.aerogear.security.model.AeroGearUser} registration
      *
+     *
      * @param user represents a simple implementation that holds user's credentials.
+     * @param password
      * @return HTTP response and the session ID
      */
-    public User login(final User user) {
-        performLogin(user);
+    public User login(final SimpleUser user, String password) {
+        authenticationManager.login(user, password);
         return user;
     }
 
     public void logout() {
         LOGGER.info("User logout!");
         authenticationManager.logout();
-    }
-
-    private void performLogin(User user) {
-        authenticationManager.login(user);
     }
 }

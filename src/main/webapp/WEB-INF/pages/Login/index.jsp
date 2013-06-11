@@ -29,9 +29,9 @@
         <form action="login" method="post">
 
             <label>Username:</label>
-            <input autocomplete="off" type="text" name="user.username"/>
+            <input autocomplete="off" type="text" name="simpleUser.loginName"/>
             <label>Password:</label>
-            <input autocomplete="off" type="password" name="user.password"/>
+            <input autocomplete="off" type="password" name="password"/>
             <input type="submit"/>
 
         </form>

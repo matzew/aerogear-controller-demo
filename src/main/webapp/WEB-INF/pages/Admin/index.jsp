@@ -30,9 +30,9 @@
     <div class="sixteen columns">
     <form action="admin" method="post">
         <label>Username:</label>
-        <input type="text" name="user.username"/>
+        <input type="text" name="simpleUser.loginName"/>
         <label>Password:</label>
-        <input type="password" name="user.password"/>
+        <input type="password" name="password"/>
         <input type="submit"/>
     </form>
     </div>

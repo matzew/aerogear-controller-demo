@@ -114,7 +114,7 @@ public class Routes extends AbstractRoutingModule {
                 .to(Cars.class).mycars();
         route()
                 .from("/autobots")
-                .on(RequestMethod.GET)
+                .on(RequestMethod.OPTIONS, RequestMethod.GET)
                 .produces(JSON)
                 .to(Cars.class).autobots();
         route()

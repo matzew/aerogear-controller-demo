@@ -40,18 +40,18 @@
         </init-param>
     </filter>  -->
     <!-- Digest authentication filter -->
-    <filter>
-        <filter-name>DigestAuthenticationFilter</filter-name>
-        <filter-class>org.picketlink.authentication.web.AuthenticationFilter</filter-class>
-        <init-param>
-            <param-name>authType</param-name>
-            <param-value>DIGEST</param-value>
-        </init-param>
-        <init-param>
-            <param-name>realm</param-name>
-            <param-value>default</param-value>
-        </init-param>
-    </filter>
+    <!--<filter>-->
+        <!--<filter-name>DigestAuthenticationFilter</filter-name>-->
+        <!--<filter-class>org.picketlink.authentication.web.AuthenticationFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>authType</param-name>-->
+            <!--<param-value>DIGEST</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>realm</param-name>-->
+            <!--<param-value>default</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
 
     <!-- HSTS filter -->
     <filter>
@@ -82,10 +82,10 @@
     </filter-mapping> -->
 
     <!-- Digest authentication filter mapping -->
-    <filter-mapping>
-        <filter-name>DigestAuthenticationFilter</filter-name>
-        <url-pattern>/autobots/*</url-pattern>
-    </filter-mapping>
+    <!--<filter-mapping>-->
+        <!--<filter-name>DigestAuthenticationFilter</filter-name>-->
+        <!--<url-pattern>/autobots/*</url-pattern>-->
+    <!--</filter-mapping>-->
 
     <!-- HSTS filter mapping -->
     <filter-mapping>

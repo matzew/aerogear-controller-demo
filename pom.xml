@@ -117,7 +117,7 @@
         <dependency>
             <groupId>com.wealdtech.hawk</groupId>
             <artifactId>hawk-core</artifactId>
-            <version>0.13.1</version>
+            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
 

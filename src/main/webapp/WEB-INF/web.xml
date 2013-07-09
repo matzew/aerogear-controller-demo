@@ -52,7 +52,7 @@
         </init-param>
     </filter>
 
-    <!-- Digest authentication filter mapping -->
+    <!-- Hawk authentication filter mapping -->
     <filter-mapping>
         <filter-name>HawkAuthenticationFilter</filter-name>
         <url-pattern>/autobots/*</url-pattern>

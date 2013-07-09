@@ -52,12 +52,6 @@
         </init-param>
     </filter>
 
-    <!-- Basic authentication filter mapping
-    <filter-mapping>
-        <filter-name>BasicAuthenticationFilter</filter-name>
-        <url-pattern>/autobots/*</url-pattern>
-    </filter-mapping> -->
-
     <!-- Digest authentication filter mapping -->
     <filter-mapping>
         <filter-name>HawkAuthenticationFilter</filter-name>
